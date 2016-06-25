@@ -1,22 +1,77 @@
 $breakpoint-tablet: 768px;
+$orange: #f5c85f;
+$gray-bg: #EEEEEE;
+$dark-gray-text: #111111;
+$gray-text: #999999;
+$font: 'PT Sans', sans-serif;
+
+/***************************************/
+/*				GENERAL				   */
+/***************************************/
 
 body{
 	margin: 0;
+	font-family: $font;
 }
 
-div{
-	min-height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li{
+		display: inline-block;
+	}
 }
 
 img{
 	max-width: 90%;
 }
 
-@media (max-width: $breakpoint-tablet) {
-	.hide-on-small{
-		display: none;
+.show-on-big{
+	display: none;
+}
+
+/***************************************/
+/*				SECTIONS			   */
+/***************************************/
+div#product{
+	padding: 100px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div#features{
+	padding: 25px 80px;
+	background: $gray-bg;
+	ul{
+		display: flex;
+		text-align: center;
+		flex-wrap: wrap;
+		li{
+			width: 100%;
+			p{
+				color: $gray-text;
+			}
+		}
+	}
+}
+
+/***************************************/
+/*			MEDIA QUERIES			   */
+/***************************************/
+@media (min-width: $breakpoint-tablet) {
+	.show-on-big{
+		display: inline;
 	}  
+
+	div#features{
+		ul{
+			li{
+				margin: 0px 10px;
+				width: calc((100% - 60px) / 3);
+			}
+		}
+	}
 }
