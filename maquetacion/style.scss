@@ -1,0 +1,23 @@
+$breakpoint-tablet: 768px;
+
+body{
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+
+div{
+	text-align: center;
+}
+
+img{
+	max-width: 90%;
+}
+
+@media (max-width: $breakpoint-tablet) {
+	.hide-on-small{
+		display: none;
+	}  
+}
