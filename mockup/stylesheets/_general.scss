@@ -1,0 +1,29 @@
+$breakpoint-tablet: 768px;
+$orange: #f5c85f;
+$gray-bg: #EEEEEE;
+$dark-gray-text: #111111;
+$gray-text: #999999;
+$font: 'PT Sans', sans-serif;
+
+body{
+  margin: 0;
+  font-family: $font;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li{
+    display: inline-block;
+  }
+}
+
+img{
+  max-width: 90%;
+}
+
+.show-on-big{
+  display: none;
+}
