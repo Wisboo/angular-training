@@ -10,7 +10,7 @@ angular.module('wisboo').config([
         url: '/not-found',
         views: {
           main: {
-            templateUrl: '../app/layouts/error/404.html'
+            templateUrl: '../static/404.html'
           }
         }
       });

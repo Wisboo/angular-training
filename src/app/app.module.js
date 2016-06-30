@@ -1,5 +1,6 @@
 angular.module(
   'wisboo', [
-    'ui.router'
+    'ui.router',
+    'pascalprecht.translate'
   ]
 );
