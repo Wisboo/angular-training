@@ -1,12 +1,12 @@
 @media (min-width: $breakpoint-tablet) {
-  .show-on-big{
+  .show-on-big {
     display: inline-block;
-  }  
+  }
 
-  div#features{
-    ul{
-      li{
-        margin: 0px 10px;
+  #features {
+    ul {
+      li {
+        margin: 0 10px;
         width: calc((100% - 60px) / 3);
       }
     }
