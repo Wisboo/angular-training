@@ -1,0 +1,17 @@
+.book {
+	&-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	}
+
+  &-item {
+    width: 25%;
+    box-sizing: border-box;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}

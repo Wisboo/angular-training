@@ -1,0 +1,17 @@
+.row
+  div(class="col-xs-12 col-md-8 col-md-offset-2")
+    div(class="controls row")
+      div(class="col-xs-12 col-sm-6 col-md-4")
+        select.form-control
+          option(selected=true) Select filter
+      div(class="col-xs-12 col-sm-6 col-md-4")
+        .input-group
+          input.form-control(type="text", placeholder="Search ...")
+          span.input-group-addon
+            i(class="glyphicon glyphicon-search")
+    .book-list
+      .book-item(ng-repeat="book in books")
+        img(ng-src="{{book.imageUrl}}")
+        strong {{book.name}}
+        {{book.author}}
+
