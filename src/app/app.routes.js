@@ -25,9 +25,24 @@ angular.module('wisboo').config([
       .state('dashboard', {
         url: '/dashboard',
         views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
           main: {
             templateUrl: 'app/components/books/index.html',
             controller: 'BookListController'
+          }
+        }
+      })
+      .state('register', {
+        url: '/register',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
+          main: {
+            templateUrl: 'app/components/users/new.html',
+            controller: 'CreateAccountController'
           }
         }
       });
