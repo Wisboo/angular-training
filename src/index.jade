@@ -25,20 +25,7 @@ html(lang="en")
     link(href="/css/all.css", rel="stylesheet")
     base(href="/")
   body(ng-app="wisboo")
-    nav(class="navbar navbar-default")
-      .container
-        .navbar-header
-          button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target="#menu", aria-expanded="false")
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(ui-sref="dashboard")
-            img(src="assets/images/wbooks_logo.svg")
-        div(class="collapse navbar-collapse", id="menu")
-          ul(class="nav navbar-nav navbar-right")
-            li
-              a(ui-sref="dashboard") Home
+    div(ui-view="menu")
     .container(ui-view="main")
     // inject:js
     // endinject

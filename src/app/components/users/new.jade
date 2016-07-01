@@ -1,0 +1,24 @@
+.row
+  div(class="col-xs-12 col-md-5 col-lg-4")
+    h1 Create account
+    form(name="create_account_form",novalidate)
+      .form-group
+        label Name
+        input.form-control(type="text", required="true", ng-model="user.name")
+      .form-group
+        label Lastname
+        input.form-control(type="text", required="true", ng-model="user.lastname")
+      .form-group
+        label Username
+        input.form-control(type="text", required="true", ng-model="user.username")
+      .form-group
+        label Email
+        input.form-control(type="email", required="true", ng-model="user.email")
+      .form-group
+        label Password
+        input.form-control(type="password", required="true", ng-model="user.password")
+      .form-group
+        label Confirm password
+        input.form-control(type="password", required="true", ng-model="user.passwordConfirm")
+      button(type="button", class="btn btn-primary",
+        ng-disabled="create_account_form.$invalid", ng-click="registerUser") Create account
