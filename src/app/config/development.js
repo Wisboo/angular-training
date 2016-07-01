@@ -3,5 +3,6 @@ angular.module('wisboo').constant('configuration', {
   credentials: {
     applicationId: 'DfYLYMHIcC80ykwZFbQet4a3YqYkOD92hcXIMIfA',
     restApiId: '0HlB6mmcrPMbu6UTyrnLnBJ4abOasv9TPrK6JYkE'
-  }
+  },
+  defaultImage: 'assets/images/default-image.png'
 });

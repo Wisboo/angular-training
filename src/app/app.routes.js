@@ -34,9 +34,9 @@ angular.module('wisboo').config([
 
     $locationProvider.html5Mode(true);
 
-    $httpProvider.interceptors.push([ 'configuration', function(configuration) {
+    $httpProvider.interceptors.push([ 'configuration', function (configuration) {
       return {
-        request: function(config){
+        request: function (config) {
           config.headers = config.headers || {};
           config.headers['X-Parse-Application-Id'] = configuration.credentials.applicationId;
           config.headers['X-Parse-REST-API-Key'] = configuration.credentials.restApiId;
