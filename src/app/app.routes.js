@@ -26,7 +26,9 @@ angular.module('wisboo').config([
         url: '/dashboard',
         views: {
           menu: {
-            templateUrl: 'app/components/menu/menu.html'
+            templateUrl: 'app/components/menu/menu.html',
+            controller: 'MenuController',
+            controllerAs: 'menu'
           },
           main: {
             templateUrl: 'app/components/books/index.html',
@@ -39,7 +41,9 @@ angular.module('wisboo').config([
         url: '/register',
         views: {
           menu: {
-            templateUrl: 'app/components/menu/menu.html'
+            templateUrl: 'app/components/menu/menu.html',
+            controller: 'MenuController',
+            controllerAs: 'menu'
           },
           main: {
             templateUrl: 'app/components/users/new.html',
