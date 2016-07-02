@@ -30,7 +30,8 @@ angular.module('wisboo').config([
           },
           main: {
             templateUrl: 'app/components/books/index.html',
-            controller: 'BookListController'
+            controller: 'BookListController',
+            controllerAs: 'ctrl'
           }
         }
       })
@@ -42,7 +43,8 @@ angular.module('wisboo').config([
           },
           main: {
             templateUrl: 'app/components/users/new.html',
-            controller: 'CreateAccountController'
+            controller: 'CreateAccountController',
+            controllerAs: 'ctrl'
           }
         }
       });

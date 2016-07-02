@@ -4,21 +4,40 @@
     form(name="create_account_form",novalidate)
       .form-group
         label Name
-        input.form-control(type="text", required="true", ng-model="user.name")
+        input.form-control(type="text", required="true", ng-model="ctrl.user.name", name="name")
+        div(ng-messages="create_account_form.name.$error", role="alert")
+          div(ng-message="required") You should input your name
       .form-group
         label Lastname
-        input.form-control(type="text", required="true", ng-model="user.lastname")
+        input.form-control(type="text", required="true", ng-model="ctrl.user.lastname", name="lastname")
+        div(ng-messages="create_account_form.lastname.$error", role="alert")
+          div(ng-message="required") You should input your lastname
       .form-group
         label Username
-        input.form-control(type="text", required="true", ng-model="user.username")
+        input.form-control(type="text", required="true", ng-model="ctrl.user.username", name="username")
+        div(ng-messages="create_account_form.username.$error", role="alert")
+          div(ng-message="required") You should input your username
       .form-group
         label Email
-        input.form-control(type="email", required="true", ng-model="user.email")
+        input.form-control(type="email", required="true", ng-model="ctrl.user.email", name="email")
+        div(ng-messages="create_account_form.email.$error", role="alert")
+          div(ng-message="required") You should input your email
+          div(ng-message="email") This is not a valid email
       .form-group
         label Password
-        input.form-control(type="password", required="true", ng-model="user.password")
+        input.form-control(type="password", required="true", ng-model="ctrl.user.password",
+         name="password", minlength="8", ng-pattern="/([a-zA-Z][0-9]|[0-9][a-zA-Z])/")
+        div(ng-messages="create_account_form.password.$error", role="alert")
+          div(ng-message="required") You should input your password
+          div(ng-message="minlength") Your password should be at least 8 characters long
+          div(ng-message="pattern") Your password should include numbers and letters
       .form-group
         label Confirm password
-        input.form-control(type="password", required="true", ng-model="user.passwordConfirm")
+        input.form-control(type="password", required="true", ng-model="ctrl.passwordConfirm", name="password_confirm", match="ctrl.user.password")
+        div(ng-messages="create_account_form.password_confirm.$error", role="alert")
+          div(ng-message="required") You have to confirm the password
+          div(ng-message="match") This does not match the password
+
+      .error {{ctrl.error_msg}}
       button(type="button", class="btn btn-primary",
-        ng-disabled="create_account_form.$invalid", ng-click="registerUser") Create account
+        ng-disabled="create_account_form.$invalid", ng-click="ctrl.registerUser(ctrl.user)") Create account
