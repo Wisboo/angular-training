@@ -2,6 +2,7 @@ angular.module('wisboo').constant('configuration', {
   endpoint: {
     books: 'https://api.parse.com/1/classes/Book',
     users: 'https://api.parse.com/1/users',
+    comments: 'https://api.parse.com/1/classes/Comment',
     login: 'https://api.parse.com/1/login',
     logout: 'https://api.parse.com/1/logout'
   },
