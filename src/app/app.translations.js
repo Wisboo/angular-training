@@ -21,7 +21,12 @@ angular.module('wisboo').config([
       SEARCH: 'Buscar',
       CHANGE_LANG: 'Cambiar idioma',
       SPANISH: 'Español',
-      ENGLISH: 'Inglés'
+      ENGLISH: 'Inglés',
+      LOGIN: 'Iniciar sesión',
+      LOGOUT: 'Salir',
+      WELCOME: 'Bienvenido',
+      INVALID_CREDENTIALS_ERROR: 'Tu contraseña y/o nombre de usuario es incorrecto.',
+      GENERAL_LOGIN_ERROR: 'Ocurrió un error al intentar iniciar sesión.'
     });
 
     $translateProvider.translations('en', {
@@ -43,7 +48,12 @@ angular.module('wisboo').config([
       SEARCH: 'Search',
       CHANGE_LANG: 'Change language',
       SPANISH: 'Spanish',
-      ENGLISH: 'English'
+      ENGLISH: 'English',
+      LOGIN: 'Sign in',
+      LOGOUT: 'Sign out',
+      WELCOME: 'Welcome back',
+      INVALID_CREDENTIALS_ERROR: 'Your password and/or username is incorrect.',
+      GENERAL_LOGIN_ERROR: 'An error ocurred while trying to sign you in.'
     });
 
     $translateProvider.preferredLanguage('es');

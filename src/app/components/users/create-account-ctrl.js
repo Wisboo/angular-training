@@ -1,10 +1,10 @@
 angular.module('wisboo').controller(
-  'CreateAccountController', ['$scope', '$http', 'configuration', '$state',
-  function ($scope, $http, configuration, $state) {
+  'CreateAccountController', ['$scope', 'User', '$state',
+  function ($scope, User, $state) {
     const self = this;
 
     self.registerUser = function (user) {
-      $http.post(configuration.endpoint.users, user).then(
+      User.registerUser(user).then(
         function (resp) {
           $state.go('dashboard');
         },

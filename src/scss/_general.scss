@@ -39,3 +39,14 @@ img {
     padding-top: 0;
   }
 }
+
+.valign-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .valigned {
+    margin: 0 auto;
+  }
+}

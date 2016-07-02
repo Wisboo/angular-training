@@ -1,10 +1,10 @@
 angular.module('wisboo').controller(
-  'BookListController', ['$scope', '$http', 'configuration', function ($scope, $http, configuration) {
+  'BookListController', ['$scope', 'Book', 'configuration', function ($scope, Book, configuration) {
     $scope.books = [];
 
     function init () {
       $scope.defaultImage = configuration.defaultImage;
-      $http.get(configuration.endpoint.books).then(
+      Book.query().then(
           function (resp) {
             $scope.books = resp.data.results;
           },

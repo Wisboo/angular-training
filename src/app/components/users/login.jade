@@ -1,0 +1,18 @@
+.valign-container
+  .valigned.col-md-5.col-lg-4
+    img(src="assets/images/wbooks_logo.svg")
+    h1 {{ 'WELCOME' | translate}}
+    form(name="login_form", novalidate="true")
+      .form-group
+        label {{ 'USERNAME' | translate }}
+        input.form-control(type="text", ng-model="credentials.username", name="username")
+      .form-group
+        label {{ 'PASSWORD' | translate }}
+        input.form-control(type="password", ng-model="credentials.password", name="password")
+      .error-msg
+        {{ ctrl.errorMsg }}
+      button(class="btn btn-primary", ng-click="ctrl.login(credentials)") {{ 'LOGIN' | translate }}
+    hr
+    | Don't have an account? 
+    a(ui-sref="register") Create one!
+

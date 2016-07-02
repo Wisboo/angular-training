@@ -10,10 +10,14 @@ nav(class="navbar navbar-default")
         img(src="assets/images/wbooks_logo.svg")
     div(class="collapse navbar-collapse", id="menu")
       ul(class="nav navbar-nav navbar-right")
-        li
+        li(ng-show="menu.authenticatedUser")
           a(ui-sref="dashboard") {{ 'HOME' | translate}}
-        li
+        li(ng-hide="menu.authenticatedUser")
           a(ui-sref="register") {{ 'CREATE_ACCOUNT' | translate}}
+        li(ng-hide="menu.authenticatedUser")
+          a(ui-sref="sign-in") {{ 'LOGIN' | translate}}
+        li(ng-show="menu.authenticatedUser")
+          a(href="javascript:void(0)", ng-click="menu.logout()") {{ 'LOGOUT' | translate}}
         li.dropdown
           a.dropdown-toggle(href="javascript:void(0)", data-toggle="dropdown", 
           role="button", aria-haspopup="true", aria-expanded="false") {{ 'CHANGE_LANG' | translate}}
