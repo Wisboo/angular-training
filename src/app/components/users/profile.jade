@@ -1,0 +1,45 @@
+.row
+  .col-xs-12.col-md-6.col-offset-md-3
+    button.btn.btn-success.float-right(ng-click='ctrl.enableEditing()', ng-disabled='ctrl.isEditingEnabled()') {{ 'EDIT' | translate}}
+    h1 {{ 'MY_ACCOUNT' | translate}}
+    form(name='edit_user_form', novalidate=true)
+      .form-group
+        label {{ 'NAME' | translate }}
+        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.name }}
+        input.form-control(type='text', name='name', ng-model='ctrl.user.name', require=true, ng-show='ctrl.isEditingEnabled()')
+        div(ng-messages='edit_user_form.name.$error', ng-show='ctrl.isEditingEnabled()', role='alert')
+          div(ng-message='required')
+            p(translate='REQUIRED_ERROR', translate-value-field="{{'NAME' | translate }}")
+
+      .form-group
+        label {{ 'LASTNAME' | translate }}
+        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.lastname }}
+        input.form-control(type='text', required='true', ng-model='ctrl.user.lastname', name='lastname', ng-show='ctrl.isEditingEnabled()')
+        div(ng-messages='edit_user_form.lastname.$error', ng-show='ctrl.isEditingEnabled()', role='alert')
+          div(ng-message='required')
+            p(translate='REQUIRED_ERROR', translate-value-field="{{'LASTNAME' | translate }}")
+
+      .form-group
+        label {{ 'USERNAME' | translate }}
+        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.username }}
+        input.form-control(type='text', required='true', ng-model='ctrl.user.username', name='username', ng-show='ctrl.isEditingEnabled()')
+        div(ng-messages="edit_user_form.username.$error", role="alert", ng-show='ctrl.isEditingEnabled()')
+          div(ng-message="required")
+            p(translate="REQUIRED_ERROR", translate-value-field="{{'USERNAME' | translate }}")
+
+      .form-group
+        label {{ 'EMAIL' | translate }}
+        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.email }}
+        input.form-control(type='email', required='true', ng-model='ctrl.user.email', name='email', ng-show='ctrl.isEditingEnabled()')
+        div(ng-messages='edit_user_form.email.$error', role='alert', ng-show='ctrl.isEditingEnabled()')
+          div(ng-message='required')
+            p(translate='REQUIRED_ERROR', translate-value-field="{{'EMAIL' | translate }}")
+          div(ng-message='email') {{ 'INVALID_EMAIL_ERROR' | translate}}
+
+        .form-group
+          label {{ 'MEMBER_SINCE' | translate }}
+          p.form-control-static {{ ctrl.user.createdAt | date: 'longDate' }}
+
+        button.btn.btn-primary(ng-click='ctrl.saveChanges(ctrl.user)', ng-disabled='edit_user_form.$invalid',
+        ng-show='ctrl.isEditingEnabled()') {{ 'SAVE' | translate }}
+        button.btn.btn-warning(ng-click='ctrl.cancelEditing()', ng-show='ctrl.isEditingEnabled()') {{ 'CANCEL' | translate }}

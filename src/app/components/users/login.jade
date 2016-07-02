@@ -13,6 +13,6 @@
         {{ ctrl.errorMsg }}
       button(class="btn btn-primary", ng-click="ctrl.login(credentials)") {{ 'LOGIN' | translate }}
     hr
-    | Don't have an account? 
-    a(ui-sref="register") Create one!
+    {{ 'NO_ACCOUNT_MSG' | translate }}
+    a(ui-sref="register") {{ 'CREATE_ACCOUNT' | translate }}!
 

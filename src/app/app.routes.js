@@ -38,6 +38,22 @@ angular.module('wisboo').config([
         },
         access: 'only-signin'
       })
+      .state('me', {
+        url: '/me',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html',
+            controller: 'MenuController',
+            controllerAs: 'menu'
+          },
+          main: {
+            templateUrl: 'app/components/users/profile.html',
+            controller: 'ProfileController',
+            controllerAs: 'ctrl'
+          }
+        },
+        access: 'only-signin'
+      })
       .state('register', {
         url: '/register',
         views: {

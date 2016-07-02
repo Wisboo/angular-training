@@ -26,7 +26,15 @@ angular.module('wisboo').config([
       LOGOUT: 'Salir',
       WELCOME: 'Bienvenido',
       INVALID_CREDENTIALS_ERROR: 'Tu contraseña y/o nombre de usuario es incorrecto.',
-      GENERAL_LOGIN_ERROR: 'Ocurrió un error al intentar iniciar sesión.'
+      GENERAL_LOGIN_ERROR: 'Ocurrió un error al intentar iniciar sesión.',
+      NO_ACCOUNT_MSG: '¿No tienes una cuenta?',
+      HELLO: 'Hola',
+      PROFILE: 'Perfil',
+      MY_ACCOUNT: 'Mi cuenta',
+      EDIT: 'Editar',
+      SAVE: 'Guardar',
+      CANCEL: 'Cancelar',
+      MEMBER_SINCE: 'Miembro desde'
     });
 
     $translateProvider.translations('en', {
@@ -53,7 +61,15 @@ angular.module('wisboo').config([
       LOGOUT: 'Sign out',
       WELCOME: 'Welcome back',
       INVALID_CREDENTIALS_ERROR: 'Your password and/or username is incorrect.',
-      GENERAL_LOGIN_ERROR: 'An error ocurred while trying to sign you in.'
+      GENERAL_LOGIN_ERROR: 'An error ocurred while trying to sign you in.',
+      NO_ACCOUNT_MSG: 'Don\'t have an account?',
+      HELLO: 'Hello',
+      PROFILE: 'Profile',
+      MY_ACCOUNT: 'My account',
+      EDIT: 'Edit',
+      SAVE: 'Save',
+      CANCEL: 'Cancel',
+      MEMBER_SINCE: 'Member since'
     });
 
     $translateProvider.preferredLanguage('es');
