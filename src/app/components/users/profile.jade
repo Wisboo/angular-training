@@ -29,17 +29,39 @@
 
       .form-group
         label {{ 'EMAIL' | translate }}
-        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.email }}
-        input.form-control(type='email', required='true', ng-model='ctrl.user.email', name='email', ng-show='ctrl.isEditingEnabled()')
-        div(ng-messages='edit_user_form.email.$error', role='alert', ng-show='ctrl.isEditingEnabled()')
+        p.form-control-static {{ ctrl.user.email }}
+
+      .form-group
+        label {{ 'MEMBER_SINCE' | translate }}
+        p.form-control-static {{ ctrl.user.createdAt | date: 'longDate' }}
+
+      .alert(ng-show='ctrl.savingErrorMsg')
+        .alert-error
+          {{ctrl.savingErrorMsg}}
+      button.btn.btn-primary(ng-click='ctrl.saveChanges(ctrl.user)', ng-disabled='edit_user_form.$invalid',
+      ng-show='ctrl.isEditingEnabled()') {{ 'SAVE' | translate }}
+      button.btn.btn-warning(ng-click='ctrl.cancelEditing()', ng-show='ctrl.isEditingEnabled()') {{ 'CANCEL' | translate }}
+
+    hr
+
+    h4 {{ 'CHANGE_PASSWORD' | translate}}
+    form(name='change_pass_form', novalidate=true)
+      .form-group
+        label {{ 'PASSWORD' | translate }}
+        input.form-control(type='password', required='true', ng-model='ctrl.newPassword',
+         name='password', minlength='8', ng-pattern='/([a-zA-Z][0-9]|[0-9][a-zA-Z])/')
+        div(ng-messages='change_pass_form.password.$error', role='alert')
           div(ng-message='required')
-            p(translate='REQUIRED_ERROR', translate-value-field="{{'EMAIL' | translate }}")
-          div(ng-message='email') {{ 'INVALID_EMAIL_ERROR' | translate}}
-
-        .form-group
-          label {{ 'MEMBER_SINCE' | translate }}
-          p.form-control-static {{ ctrl.user.createdAt | date: 'longDate' }}
-
-        button.btn.btn-primary(ng-click='ctrl.saveChanges(ctrl.user)', ng-disabled='edit_user_form.$invalid',
-        ng-show='ctrl.isEditingEnabled()') {{ 'SAVE' | translate }}
-        button.btn.btn-warning(ng-click='ctrl.cancelEditing()', ng-show='ctrl.isEditingEnabled()') {{ 'CANCEL' | translate }}
+            p(translate='REQUIRED_ERROR', translate-value-field="{{'PASSWORD' | translate }}")
+          div(ng-message='minlength') {{ 'SHORT_PASSWORD_ERROR' | translate }}
+          div(ng-message='pattern') {{ 'LETTERS_AND_NUMBERS_ERROR' | translate}}
+      .form-group
+        label {{ 'CONFIRM_PASSWORD' | translate }}
+        input.form-control(type='password', required='true', ng-model='ctrl.passwordConfirm', name='password_confirm', match='ctrl.newPassword')
+        div(ng-messages='change_pass_form.password_confirm.$error', role='alert')
+          div(ng-message='required') {{ 'UNCONFIRMED_PASSWORD_ERROR' | translate }}
+          div(ng-message='match') {{ 'UNEQUAL_ERROR' | translate}}
+      .alert(ng-show='ctrl.savingErrorMsg')
+        .alert-error
+          {{ctrl.savingPassErrorMsg}}
+      button.btn.btn-primary(ng-click='ctrl.changePassword(ctrl.newPassword)', ng-disabled='change_pass_form.$invalid') {{ 'CHANGE_PASSWORD' | translate }}
