@@ -1,0 +1,23 @@
+.row
+  .col-md-8.col-md-offset-2
+    a(ui-sref='dashboard') {{ 'BACK' | translate }}
+    .book-details.row
+      .col-sm-4
+        img(src='{{ctrl.book.imageUrl || ctrl.defaultImage }}')
+      .col-sm-8
+        .book-info
+          h3 {{ ctrl.book.name }}
+          p {{ ctrl.book.author }}
+          {{ ctrl.book.year }} 
+          br
+          {{ ctrl.book.publisher }}
+        button.btn.btn-primary {{ 'RENT' | translate }}
+    hr
+    h5 {{ 'COMMENTS' | translate }}
+    p(ng-show='!ctrl.book.comments') {{ 'NO_COMMENTS' | translate }}
+    .media(ng-repeat='comment in ctrl.book.comments')
+      .media-left
+        img.media-object(src)
+      .media-body
+        h5.media-heading {{ comment.user }}
+        p {{ comment.comment }}
