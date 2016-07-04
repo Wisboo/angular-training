@@ -35,8 +35,9 @@
         label {{ 'MEMBER_SINCE' | translate }}
         p.form-control-static {{ ctrl.user.createdAt | date: 'longDate' }}
 
-      .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-        {{ctrl.savingErrorMsg}}
+      .alert(ng-show='ctrl.savingErrorMsg')
+        .alert-error
+          {{ctrl.savingErrorMsg}}
       button.btn.btn-primary(ng-click='ctrl.saveChanges(ctrl.user)', ng-disabled='edit_user_form.$invalid',
       ng-show='ctrl.isEditingEnabled()') {{ 'SAVE' | translate }}
       button.btn.btn-warning(ng-click='ctrl.cancelEditing()', ng-show='ctrl.isEditingEnabled()') {{ 'CANCEL' | translate }}
@@ -60,6 +61,7 @@
         div(ng-messages='change_pass_form.password_confirm.$error', role='alert')
           div(ng-message='required') {{ 'UNCONFIRMED_PASSWORD_ERROR' | translate }}
           div(ng-message='match') {{ 'UNEQUAL_ERROR' | translate}}
-      .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-        {{ctrl.savingPassErrorMsg}}
+      .alert(ng-show='ctrl.savingErrorMsg')
+        .alert-error
+          {{ctrl.savingPassErrorMsg}}
       button.btn.btn-primary(ng-click='ctrl.changePassword(ctrl.newPassword)', ng-disabled='change_pass_form.$invalid') {{ 'CHANGE_PASSWORD' | translate }}
