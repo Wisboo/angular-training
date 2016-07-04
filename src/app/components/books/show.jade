@@ -3,7 +3,7 @@
     a(ui-sref='dashboard') {{ 'BACK' | translate }}
     .book-details.row
       .col-sm-4
-        img(src='{{ ctrl.book.imageUrl || ctrl.defaultImage }}')
+        img(src='{{ctrl.book.imageUrl || ctrl.defaultImage }}')
       .col-sm-8
         .book-info
           h3 {{ ctrl.book.name }}

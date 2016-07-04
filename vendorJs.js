@@ -8,6 +8,5 @@ module.exports = [
   'angular-translate-storage-cookie/angular-translate-storage-cookie.js',
   'angular-angular-translate-storage-local/angular-translate-storage-local.js',
   'jquery/dist/jquery.js',
-  'bootstrap/dist/js/bootstrap.js',
-  'angular-bootstrap/ui-bootstrap-tpls.js'
+  'bootstrap/dist/js/bootstrap.js'
 ];

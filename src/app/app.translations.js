@@ -11,10 +11,10 @@ angular.module('wisboo').config([
       EMAIL: 'Correo electrónico',
       PASSWORD: 'Contraseña',
       CONFIRM_PASSWORD: 'Confirmar contraseña',
-      REQUIRED_ERROR: 'Debes ingresar el campo {{field}}.',
+      REQUIRED_ERROR: 'Debes ingresar tu {{field}}.',
       INVALID_EMAIL_ERROR: 'El correo electrónico ingresado es inválido.',
-      SHORT_PASSWORD_ERROR: 'La contraseña debe tener al menos 8 caracteres.',
-      LETTERS_AND_NUMBERS_ERROR: 'La contraseña debe tener letras y números.',
+      SHORT_PASSWORD_ERROR: 'Tu contraseña debe tener al menos 8 caracteres.',
+      LETTERS_AND_NUMBERS_ERROR: 'Tu contraseña debe tener letras y números.',
       UNCONFIRMED_PASSWORD_ERROR: 'Debes reingresar tu contraseña',
       UNEQUAL_ERROR: 'Las contraseñas ingresadas no coinciden.',
       SELECT_FILTER: 'Selecciona un filtro',
@@ -25,7 +25,7 @@ angular.module('wisboo').config([
       LOGIN: 'Iniciar sesión',
       LOGOUT: 'Salir',
       WELCOME: 'Bienvenido',
-      INVALID_CREDENTIALS_ERROR: 'La contraseña y/o nombre de usuario es incorrecto.',
+      INVALID_CREDENTIALS_ERROR: 'Tu contraseña y/o nombre de usuario es incorrecto.',
       GENERAL_LOGIN_ERROR: 'Ocurrió un error al intentar iniciar sesión.',
       NO_ACCOUNT_MSG: '¿No tienes una cuenta?',
       HELLO: 'Hola',
@@ -46,15 +46,7 @@ angular.module('wisboo').config([
       COMMENT: 'Comentario',
       NO_COMMENTS: 'No hay comentarios registrados.',
       NEW_COMMENT: 'Deja tu comentario',
-      COMMENT_SAVING_ERROR: 'Ocurrió un error al intentar guardar tu comentario.',
-      SUGGEST_BOOK: 'Sugerir libro',
-      EDITORIAL: 'Editorial',
-      AUTHOR: 'Autor',
-      PRICE: 'Precio',
-      LINK: 'Enlace',
-      YEAR: 'Año',
-      SUGGEST_BOOK: 'Sugerir libro',
-      SUGGESTION_ERROR: 'Ocurrió un error al intentar guardar tu sugerencia.'
+      COMMENT_SAVING_ERROR: 'Ocurrió un error al intentar guardar tu comentario.'
     });
 
     $translateProvider.translations('en', {
@@ -66,10 +58,10 @@ angular.module('wisboo').config([
       EMAIL: 'Email',
       PASSWORD: 'Password',
       CONFIRM_PASSWORD: 'Confirm password',
-      REQUIRED_ERROR: 'You must enter the {{field}} field.',
-      INVALID_EMAIL_ERROR: 'The email is invalid.',
-      SHORT_PASSWORD_ERROR: 'The password should have at least 8 characters.',
-      LETTERS_AND_NUMBERS_ERROR: 'The password should contain letters and numbers.',
+      REQUIRED_ERROR: 'You must enter your {{field}}.',
+      INVALID_EMAIL_ERROR: 'Your email is invalid.',
+      SHORT_PASSWORD_ERROR: 'Your password should have at least 8 characters.',
+      LETTERS_AND_NUMBERS_ERROR: 'Your password should contain letters and numbers.',
       UNCONFIRMED_PASSWORD_ERROR: 'You must re-enter your password.',
       UNEQUAL_ERROR: 'The passwords don\'t match.',
       SELECT_FILTER: 'Select filter',
@@ -80,7 +72,7 @@ angular.module('wisboo').config([
       LOGIN: 'Sign in',
       LOGOUT: 'Sign out',
       WELCOME: 'Welcome back',
-      INVALID_CREDENTIALS_ERROR: 'The password and/or username is incorrect.',
+      INVALID_CREDENTIALS_ERROR: 'Your password and/or username is incorrect.',
       GENERAL_LOGIN_ERROR: 'An error ocurred while trying to sign you in.',
       NO_ACCOUNT_MSG: 'Don\'t have an account?',
       HELLO: 'Hello',
@@ -101,15 +93,7 @@ angular.module('wisboo').config([
       COMMENT: 'Comment',
       NO_COMMENTS: 'There are no comments yet.',
       NEW_COMMENT: 'Leave a comment',
-      COMMENT_SAVING_ERROR: 'An error ocurred while saving your comment.',
-      SUGGEST_BOOK: 'Suggest book',
-      EDITORIAL: 'Editorial',
-      AUTHOR: 'Author',
-      PRICE: 'Price',
-      LINK: 'Link',
-      YEAR: 'Year',
-      SUGGEST_BOOK: 'Suggest book',
-      SUGGESTION_ERROR: 'An error ocurred while savin your suggestion'
+      COMMENT_SAVING_ERROR: 'An error ocurred while saving your comment.'
     });
 
     $translateProvider.preferredLanguage('es');
