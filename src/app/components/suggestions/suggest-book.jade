@@ -1,0 +1,36 @@
+.modal-body
+  form(name='suggestion_form', novalidate=true)
+    .text-center 
+      img(src='assets/images/add_book.svg')
+      h4 {{ 'SUGGEST_BOOK' | translate }}   
+    .form-group
+      label {{ 'NAME' | translate }}
+      input.form-control(type='text', ng-model='suggestion.name', name='name', required=true)
+      div(ng-messages='suggestion_form.name.$error', role='alert')
+        div(ng-message='required')
+          p(translate='REQUIRED_ERROR', translate-value-field="{{'NAME' | translate }}")
+      .row
+        .col-md-6
+          .form-group
+            label {{ 'EDITORIAL' | translate }}
+            input.form-control(type='text', ng-model='suggestion.editorial', name='editorial')
+        .col-md-6
+          .form-group
+            label {{ 'AUTHOR' | translate }}
+            input.form-control(type='text', ng-model='suggestion.author', name='author')
+    .form-group
+      label {{ 'LINK' | translate }}
+      input.form-control(type='text', ng-model='suggestion.link', name='link')
+    .row
+      .col-md-4.col-lg-3
+        .form-group
+          label {{ 'PRICE' | translate }}
+          input.form-control(type='text', ng-model='suggestion.price', name='price')
+      .col-md-4.col-lg-3
+        .form-group
+          label {{ 'YEAR' | translate }}
+          input.form-control(type='text', ng-model='suggestion.year', name='year')
+      .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
+        {{ ctrl.savingErrorMsg }}
+    button.btn.btn-primary(ng-click='saveSuggestion(suggestion)', ng-disabled='suggestion_form.$invalid') {{ 'SEND' | translate }}
+    button.btn.btn-warning(ng-click='cancel()') {{ 'CANCEL' | translate }}
