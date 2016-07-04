@@ -37,7 +37,12 @@ angular.module('wisboo').config([
       MEMBER_SINCE: 'Miembro desde',
       CHANGE_PASSWORD: 'Cambiar contraseña',
       USERNAME_TAKEN_ERROR: 'El nombre de usuario ya está en uso.',
-      GENERAL_SAVING_ERROR: 'Ocurrió un error al intentar guardar los cambios.'
+      GENERAL_SAVING_ERROR: 'Ocurrió un error al intentar guardar los cambios.',
+      RENT: 'Alquilar',
+      BACK: 'Regresar',
+      SUGGESTION: 'Sugerencias',
+      COMMENTS: 'Comentarios',
+      NO_COMMENTS: 'No hay comentarios registrados.'
     });
 
     $translateProvider.translations('en', {
@@ -75,7 +80,12 @@ angular.module('wisboo').config([
       MEMBER_SINCE: 'Member since',
       CHANGE_PASSWORD: 'Change password',
       USERNAME_TAKEN_ERROR: 'This username is already taken.',
-      GENERAL_SAVING_ERROR: 'An error ocurred while saving your changes.'
+      GENERAL_SAVING_ERROR: 'An error ocurred while saving your changes.',
+      RENT: 'Rent',
+      BACK: 'Go back',
+      SUGGESTION: 'Suggestions',
+      COMMENTS: 'Comments',
+      NO_COMMENTS: 'There are no comments yet.'
     });
 
     $translateProvider.preferredLanguage('es');
