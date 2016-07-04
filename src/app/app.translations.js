@@ -34,10 +34,7 @@ angular.module('wisboo').config([
       EDIT: 'Editar',
       SAVE: 'Guardar',
       CANCEL: 'Cancelar',
-      MEMBER_SINCE: 'Miembro desde',
-      CHANGE_PASSWORD: 'Cambiar contraseña',
-      USERNAME_TAKEN_ERROR: 'El nombre de usuario ya está en uso.',
-      GENERAL_SAVING_ERROR: 'Ocurrió un error al intentar guardar los cambios.'
+      MEMBER_SINCE: 'Miembro desde'
     });
 
     $translateProvider.translations('en', {
@@ -72,10 +69,7 @@ angular.module('wisboo').config([
       EDIT: 'Edit',
       SAVE: 'Save',
       CANCEL: 'Cancel',
-      MEMBER_SINCE: 'Member since',
-      CHANGE_PASSWORD: 'Change password',
-      USERNAME_TAKEN_ERROR: 'This username is already taken.',
-      GENERAL_SAVING_ERROR: 'An error ocurred while saving your changes.'
+      MEMBER_SINCE: 'Member since'
     });
 
     $translateProvider.preferredLanguage('es');
