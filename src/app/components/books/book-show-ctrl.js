@@ -5,13 +5,13 @@ angular.module('wisboo').controller(
 
     self.saveComment = function (comment) {
       self.savingErrorMsg = undefined;
-      const oldComments = angular.copy(self.comments);
-      const newComment = {
+      const old_comments = angular.copy(self.comments);
+      const new_comment = {
         comment: comment,
         createdAt: new Date(),
         user: User.getUser()
       };
-      self.comments.push(newComment);
+      self.comments.push(new_comment);
 
       Comment.save(comment, $stateParams.bookId).then(
         function (resp) {
@@ -21,7 +21,7 @@ angular.module('wisboo').controller(
           $translate('COMMENT_SAVING_ERROR').then(function (text) {
             self.savingErrorMsg = text;
           });
-          self.comments = oldComments;
+          self.comments = old_comments;
         }
       );
     };
