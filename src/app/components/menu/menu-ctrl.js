@@ -1,5 +1,5 @@
 angular.module('wisboo').controller(
-  'MenuController', ['$translate', 'User', '$state', function ($translate, User, $state) {
+  'MenuController', ['$translate', 'User', '$state', '$uibModal', function ($translate, User, $state, $uibModal) {
     const self = this;
     self.authenticatedUser = User.getUser();
 
@@ -12,6 +12,18 @@ angular.module('wisboo').controller(
         function () {
           $state.go('sign-in');
         }
+      );
+    };
+
+    self.openSuggestionModal = function () {
+      const modalInstance = $uibModal.open({
+        templateUrl: 'app/components/suggestions/suggest-book.html',
+        controller: 'SuggestionController'
+      });
+
+      modalInstance.result.then(
+        function () {},
+        function () {}
       );
     };
   }]

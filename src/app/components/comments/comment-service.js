@@ -16,7 +16,7 @@ angular.module('wisboo').factory(
           include: 'user'
         }
       }).then(
-        function(res){
+        function (res) {
           return res.data.results;
         }
       );
