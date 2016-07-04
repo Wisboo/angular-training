@@ -1,0 +1,14 @@
+@media (min-width: $breakpoint-tablet) {
+  .show-on-big {
+    display: inline-block;
+  }
+
+  #features {
+    ul {
+      li {
+        margin: 0 10px;
+        width: calc((100% - 60px) / 3);
+      }
+    }
+  }
+}

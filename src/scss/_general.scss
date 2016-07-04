@@ -1,0 +1,33 @@
+$breakpoint-tablet: 768px;
+$orange: #F5C85F;
+$gray-bg: #EEE;
+$dark-gray-text: #111;
+$gray-text: #999;
+$font: 'PT Sans', sans-serif;
+
+body {
+  margin: 0;
+}
+
+#product-container {
+  margin: 0;
+  font-family: $font;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+  }
+}
+
+img {
+  max-width: 90%;
+}
+
+.show-on-big {
+  display: none;
+}

@@ -1,0 +1,25 @@
+#product {
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#features {
+  padding: 25px 80px;
+  background: $gray-bg;
+
+  ul {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+
+    li {
+      width: 100%;
+
+      p {
+        color: $gray-text;
+      }
+    }
+  }
+}
