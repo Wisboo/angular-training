@@ -4,6 +4,7 @@ angular.module(
     'ngCookies',
     'ngStorage',
     'pascalprecht.translate',
-    'ngMessages'
+    'ngMessages',
+    'ui.bootstrap'
   ]
 );
