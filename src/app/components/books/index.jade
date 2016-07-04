@@ -12,7 +12,6 @@
     .book-list
       .book-item(ng-repeat="book in ctrl.books")
         img(ng-src="{{book.imageUrl || ctrl.defaultImage }}")
-        h5 
-          a(ui-sref='book-details({{ {bookId: book.objectId} }})') {{ book.name }} 
+        h5 {{book.name}}
         {{book.author}}
 
