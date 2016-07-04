@@ -35,7 +35,8 @@ angular.module('wisboo').config([
             controller: 'BookListController',
             controllerAs: 'ctrl'
           }
-        }
+        },
+        access: 'only-signin'
       })
       .state('register', {
         url: '/register',
@@ -50,32 +51,49 @@ angular.module('wisboo').config([
             controller: 'CreateAccountController',
             controllerAs: 'ctrl'
           }
-        }
+        },
+        access: 'only-anon'
       })
-      .state('register', {
-        url: '/register',
+      .state('sign-in', {
+        url: '/sign-in',
         views: {
-          menu: {
-            templateUrl: 'app/components/menu/menu.html'
-          },
           main: {
-            templateUrl: 'app/components/users/new.html',
-            controller: 'CreateAccountController'
+            templateUrl: 'app/components/users/login.html',
+            controller: 'LoginController',
+            controllerAs: 'ctrl'
           }
-        }
+        },
+        access: 'only-anon'
       });
 
     $locationProvider.html5Mode(true);
 
-    $httpProvider.interceptors.push([ 'configuration', function (configuration) {
+    $httpProvider.interceptors.push([ 'configuration', '$injector', function (configuration, $injector) {
       return {
         request: function (config) {
           config.headers = config.headers || {};
           config.headers['X-Parse-Application-Id'] = configuration.credentials.applicationId;
           config.headers['X-Parse-REST-API-Key'] = configuration.credentials.restApiId;
+
+          const UserService = $injector.get('User');
+          if (UserService.getUser() !== undefined) {
+            config.headers['X-Parse-Session-Token'] = UserService.getUser().sessionToken;
+          }
+
           return config;
         }
       };
     }]);
   }
-]);
+])
+.run(['$rootScope', 'User', '$state', function ($rootScope, User, $state) {
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+    if (toState.access === 'only-signin' && !User.getUser()) {
+      $state.go('sign-in');
+      event.preventDefault();
+    } else if (toState.access === 'only-anon' && User.getUser()) {
+      $state.go('dashboard');
+      event.preventDefault();
+    }
+  });
+}]);
