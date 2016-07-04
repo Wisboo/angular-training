@@ -47,6 +47,18 @@ angular.module('wisboo').config([
             controllerAs: 'ctrl'
           }
         }
+      })
+      .state('register', {
+        url: '/register',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
+          main: {
+            templateUrl: 'app/components/users/new.html',
+            controller: 'CreateAccountController'
+          }
+        }
       });
 
     $locationProvider.html5Mode(true);
