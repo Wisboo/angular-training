@@ -54,6 +54,22 @@ angular.module('wisboo').config([
         },
         access: 'only-signin'
       })
+      .state('book-details', {
+        url: '/books/:bookId',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html',
+            controller: 'MenuController',
+            controllerAs: 'menu'
+          },
+          main: {
+            templateUrl: 'app/components/books/show.html',
+            controller: 'BookShowController',
+            controllerAs: 'ctrl'
+          }
+        },
+        access: 'only-signin'
+      })
       .state('register', {
         url: '/register',
         views: {
