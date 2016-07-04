@@ -13,19 +13,11 @@
           {{ ctrl.book.publisher }}
         button.btn.btn-primary {{ 'RENT' | translate }}
     hr
-    h5 {{ 'NEW_COMMENT' | translate}}
-    form(name='new_comment_form', novalidate=true)
-      .form-group
-        label {{ 'COMMENT' | translate }}
-        textarea.form-control(rows='3', maxlength='255', required=true, ng-model='ctrl.comment')
-        .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-          {{ ctrl.savingErrorMsg }}
-      button.btn.btn-primary(ng-click='ctrl.saveComment(comment)', ng-disabled='!ctrl.comment.length') {{ 'SEND' | translate }}
     h5 {{ 'COMMENTS' | translate }}
-    p(ng-show='!ctrl.comments') {{ 'NO_COMMENTS' | translate }}
-    .media(ng-repeat='comment in ctrl.comments')
+    p(ng-show='!ctrl.book.comments') {{ 'NO_COMMENTS' | translate }}
+    .media(ng-repeat='comment in ctrl.book.comments')
       .media-left
+        img.media-object(src)
       .media-body
-        h5.media-heading {{ comment.user.name + ' ' + comment.user.lastname }}
-        strong {{ comment.createdAt | date: 'short' }}
+        h5.media-heading {{ comment.user }}
         p {{ comment.comment }}

@@ -43,6 +43,6 @@
           div(ng-message="required") {{ 'UNCONFIRMED_PASSWORD_ERROR' | translate }}
           div(ng-message="match") {{ 'UNEQUAL_ERROR' | translate}}
 
-      .alert.alert-danger(ng-show='ctrl.error_msg') {{ctrl.error_msg}}
+      .error {{ctrl.error_msg}}
       button(type="button", class="btn btn-primary",
         ng-disabled="create_account_form.$invalid", ng-click="ctrl.registerUser(ctrl.user)") {{ 'CREATE_ACCOUNT' | translate }}

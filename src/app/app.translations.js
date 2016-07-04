@@ -33,7 +33,6 @@ angular.module('wisboo').config([
       MY_ACCOUNT: 'Mi cuenta',
       EDIT: 'Editar',
       SAVE: 'Guardar',
-      SEND: 'Enviar',
       CANCEL: 'Cancelar',
       MEMBER_SINCE: 'Miembro desde',
       CHANGE_PASSWORD: 'Cambiar contraseña',
@@ -43,10 +42,7 @@ angular.module('wisboo').config([
       BACK: 'Regresar',
       SUGGESTION: 'Sugerencias',
       COMMENTS: 'Comentarios',
-      COMMENT: 'Comentario',
-      NO_COMMENTS: 'No hay comentarios registrados.',
-      NEW_COMMENT: 'Deja tu comentario',
-      COMMENT_SAVING_ERROR: 'Ocurrió un error al intentar guardar tu comentario.'
+      NO_COMMENTS: 'No hay comentarios registrados.'
     });
 
     $translateProvider.translations('en', {
@@ -80,7 +76,6 @@ angular.module('wisboo').config([
       MY_ACCOUNT: 'My account',
       EDIT: 'Edit',
       SAVE: 'Save',
-      SEND: 'Send',
       CANCEL: 'Cancel',
       MEMBER_SINCE: 'Member since',
       CHANGE_PASSWORD: 'Change password',
@@ -90,10 +85,7 @@ angular.module('wisboo').config([
       BACK: 'Go back',
       SUGGESTION: 'Suggestions',
       COMMENTS: 'Comments',
-      COMMENT: 'Comment',
-      NO_COMMENTS: 'There are no comments yet.',
-      NEW_COMMENT: 'Leave a comment',
-      COMMENT_SAVING_ERROR: 'An error ocurred while saving your comment.'
+      NO_COMMENTS: 'There are no comments yet.'
     });
 
     $translateProvider.preferredLanguage('es');
