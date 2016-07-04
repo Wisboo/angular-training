@@ -11,6 +11,15 @@ nav(class="navbar navbar-default")
     div(class="collapse navbar-collapse", id="menu")
       ul(class="nav navbar-nav navbar-right")
         li
-          a(ui-sref="dashboard") Home
+          a(ui-sref="dashboard") {{ 'HOME' | translate}}
         li
-          a(ui-sref="register") Create account
+          a(ui-sref="register") {{ 'CREATE_ACCOUNT' | translate}}
+        li.dropdown
+          a.dropdown-toggle(href="#", data-toggle="dropdown", 
+          role="button", aria-haspopup="true", aria-expanded="false") {{ 'CHANGE_LANG' | translate}}
+            span.caret
+          ul.dropdown-menu
+            li
+              a(href="javascript:void(0)", ng-click="menu.changeLanguage('es')") {{ 'SPANISH' | translate }}
+            li
+              a(href="javascript:void(0)", ng-click="menu.changeLanguage('en')") {{ 'ENGLISH' | translate }}

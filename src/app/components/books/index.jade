@@ -3,10 +3,10 @@
     div(class="controls row")
       div(class="col-xs-12 col-sm-6 col-md-4")
         select.form-control
-          option(selected=true) Select filter
+          option(selected=true) {{ 'SELECT_FILTER' | translate }}
       div(class="col-xs-12 col-sm-6 col-md-4")
         .input-group
-          input.form-control(type="text", placeholder="Search ...")
+          input.form-control(type="text", placeholder="{{ 'SEARCH' | translate }}")
           span.input-group-addon
             i(class="glyphicon glyphicon-search")
     .book-list
