@@ -11,7 +11,7 @@
             i(class="glyphicon glyphicon-search")
     .book-list
       .book-item(ng-repeat="book in ctrl.books")
-        img(ng-src="{{book.imageUrl || defaultImage }}")
+        img(ng-src="{{book.imageUrl || ctrl.defaultImage }}")
         h5 {{book.name}}
         {{book.author}}
 
