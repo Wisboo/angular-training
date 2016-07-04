@@ -1,0 +1,23 @@
+.controls {
+  margin-bottom: 30px;
+}
+
+.book {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+	}
+
+  &-item {
+    width: 25%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+
+    img {
+      width: 180px;
+      height: 250px;
+      display: block;
+    }
+  }
+}

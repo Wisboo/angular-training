@@ -31,3 +31,11 @@ img {
 .show-on-big {
   display: none;
 }
+
+.navbar.navbar-default {
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+
+  .navbar-brand {
+    padding-top: 0;
+  }
+}

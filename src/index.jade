@@ -25,6 +25,7 @@ html(lang="en")
     link(href="/css/all.css", rel="stylesheet")
     base(href="/")
   body(ng-app="wisboo")
-    .container-fluid(ui-view="main")
+    div(ui-view="menu")
+    .container(ui-view="main")
     // inject:js
     // endinject

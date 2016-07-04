@@ -1,6 +1,6 @@
 angular.module('wisboo').config([
-  '$stateProvider', '$urlRouterProvider', '$locationProvider',
-  function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  '$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+  function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise( ($injector) => {
       $injector.get('$state').go('404');
     });
@@ -21,8 +21,43 @@ angular.module('wisboo').config([
             templateUrl: 'app/components/landing/landing.html'
           }
         }
+      })
+      .state('dashboard', {
+        url: '/dashboard',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
+          main: {
+            templateUrl: 'app/components/books/index.html',
+            controller: 'BookListController'
+          }
+        }
+      })
+      .state('register', {
+        url: '/register',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
+          main: {
+            templateUrl: 'app/components/users/new.html',
+            controller: 'CreateAccountController'
+          }
+        }
       });
 
     $locationProvider.html5Mode(true);
+
+    $httpProvider.interceptors.push([ 'configuration', function (configuration) {
+      return {
+        request: function (config) {
+          config.headers = config.headers || {};
+          config.headers['X-Parse-Application-Id'] = configuration.credentials.applicationId;
+          config.headers['X-Parse-REST-API-Key'] = configuration.credentials.restApiId;
+          return config;
+        }
+      };
+    }]);
   }
 ]);
