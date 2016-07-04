@@ -34,28 +34,7 @@ angular.module('wisboo').factory(
     };
 
     factory.edit = function (user) {
-      let data;
-      if (user.password) {
-        data = {password: user.password};
-      } else {
-        data = {
-          name: user.name,
-          lastname: user.lastname,
-          username: user.username
-        };
-      }
-      return $http.put(configuration.endpoint.users + '/' + user.objectId, data).then(
-        function () {
-          if (data.password) {
-            delete $localStorage._wbooks_user;
-            factory.doLogin({username: user.username, password: data.password});
-          } else {
-            let editedUser = $localStorage._wbooks_user;
-            angular.extend(editedUser, data);
-            $localStorage._wbooks_user = editedUser;
-          }
-        }
-      );
+
     };
 
     return factory;

@@ -84,7 +84,7 @@ angular.module('wisboo').config([
 
     $locationProvider.html5Mode(true);
 
-    $httpProvider.interceptors.push([ 'configuration', '$injector', '$q', function (configuration, $injector, $q) {
+    $httpProvider.interceptors.push([ 'configuration', '$injector', function (configuration, $injector) {
       return {
         request: function (config) {
           config.headers = config.headers || {};
