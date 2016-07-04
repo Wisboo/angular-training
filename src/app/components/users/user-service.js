@@ -2,11 +2,15 @@ angular.module('wisboo').factory(
   'User', ['$http', '$localStorage', 'configuration', function ($http, $localStorage, configuration) {
     const factory = {};
     factory.doLogin = function (credentials) {
-      return $http.get(configuration.endpoint.login + '/?username=' +
-        credentials.username + '&password=' + credentials.password).then(function (resp) {
-          $localStorage._wbooks_user = resp.data;
+      return $http.get(configuration.endpoint.login, {
+        params: {
+          username: credentials.username,
+          password: credentials.password
         }
-      );
+      })
+      .then(function (resp) {
+        $localStorage._wbooks_user = resp.data;
+      });
     };
 
     factory.doLogout = function () {
