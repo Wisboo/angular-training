@@ -13,6 +13,14 @@ angular.module('wisboo').config([
             templateUrl: '../static/404.html'
           }
         }
+      })
+      .state('landing', {
+        url: '/landing',
+        views: {
+          main: {
+            templateUrl: 'app/components/landing/landing.html'
+          }
+        }
       });
 
     $locationProvider.html5Mode(true);

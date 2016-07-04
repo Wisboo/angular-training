@@ -1,29 +1,33 @@
 $breakpoint-tablet: 768px;
-$orange: #f5c85f;
-$gray-bg: #EEEEEE;
-$dark-gray-text: #111111;
-$gray-text: #999999;
+$orange: #F5C85F;
+$gray-bg: #EEE;
+$dark-gray-text: #111;
+$gray-text: #999;
 $font: 'PT Sans', sans-serif;
 
-body{
+body {
+  margin: 0;
+}
+
+#product-container {
   margin: 0;
   font-family: $font;
 }
 
-ul{
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 
-  li{
+  li {
     display: inline-block;
   }
 }
 
-img{
+img {
   max-width: 90%;
 }
 
-.show-on-big{
+.show-on-big {
   display: none;
 }
