@@ -11,7 +11,10 @@
           {{ ctrl.book.year }} 
           br
           {{ ctrl.book.publisher }}
-        button.btn.btn-primary {{ 'RENT' | translate }}
+        {{ ctrl.statusMsg }}
+        div
+          button.btn.btn-primary(ng-click='ctrl.rentBook()', ng-disabled='ctrl.alreadyRented') {{ 'RENT' | translate }}
+          button.btn.btn-success(ng-click='ctrl.addToWishlist()', ng-show='ctrl.alreadyRented') {{ 'ADD_TO_WISHLIST' | translate }}
     hr
     h5 {{ 'NEW_COMMENT' | translate}}
     form(name='new_comment_form', novalidate=true)

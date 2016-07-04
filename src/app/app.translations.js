@@ -54,7 +54,10 @@ angular.module('wisboo').config([
       LINK: 'Enlace',
       YEAR: 'Año',
       SUGGEST_BOOK: 'Sugerir libro',
-      SUGGESTION_ERROR: 'Ocurrió un error al intentar guardar tu sugerencia.'
+      SUGGESTION_ERROR: 'Ocurrió un error al intentar guardar tu sugerencia.',
+      ADD_TO_WISHLIST: 'Agregar a mi lista',
+      RETURN_MSG: 'Retornar antes de {{ date }}',
+      NOT_AVAILABLE_MSG: 'Este libro no está disponible'
     });
 
     $translateProvider.translations('en', {
@@ -109,7 +112,10 @@ angular.module('wisboo').config([
       LINK: 'Link',
       YEAR: 'Year',
       SUGGEST_BOOK: 'Suggest book',
-      SUGGESTION_ERROR: 'An error ocurred while savin your suggestion'
+      SUGGESTION_ERROR: 'An error ocurred while savin your suggestion',
+      ADD_TO_WISHLIST: 'Add to wishlist',
+      RETURN_MSG: 'Return before {{ date }}',
+      NOT_AVAILABLE_MSG: 'This book is not available'
     });
 
     $translateProvider.preferredLanguage('es');
