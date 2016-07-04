@@ -30,7 +30,21 @@ angular.module('wisboo').config([
           },
           main: {
             templateUrl: 'app/components/books/index.html',
-            controller: 'BookListController'
+            controller: 'BookListController',
+            controllerAs: 'ctrl'
+          }
+        }
+      })
+      .state('register', {
+        url: '/register',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html'
+          },
+          main: {
+            templateUrl: 'app/components/users/new.html',
+            controller: 'CreateAccountController',
+            controllerAs: 'ctrl'
           }
         }
       })

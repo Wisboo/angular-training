@@ -4,7 +4,7 @@ angular.module('wisboo').controller(
 
     function init () {
       $scope.defaultImage = configuration.defaultImage;
-      $http.get(configuration.endpoint).then(
+      $http.get(configuration.endpoint.books).then(
           function (resp) {
             $scope.books = resp.data.results;
           },
