@@ -16,8 +16,15 @@ nav(class="navbar navbar-default")
           a(ui-sref="register") {{ 'CREATE_ACCOUNT' | translate}}
         li(ng-hide="menu.authenticatedUser")
           a(ui-sref="sign-in") {{ 'LOGIN' | translate}}
-        li(ng-show="menu.authenticatedUser")
-          a(href="javascript:void(0)", ng-click="menu.logout()") {{ 'LOGOUT' | translate}}
+        li.dropdown(ng-show="menu.authenticatedUser")
+          a.dropdown-toggle(href="javascript:void(0)", data-toggle="dropdown", 
+          role="button", aria-haspopup="true", aria-expanded="false") {{ 'HELLO' | translate}} {{ menu.authenticatedUser.name }}
+            span.caret
+          ul.dropdown-menu
+            li
+              a(ui-sref="me") {{ 'PROFILE' | translate }}
+            li
+              a(href="javascript:void(0)", ng-click="menu.logout()") {{ 'LOGOUT' | translate}}
         li.dropdown
           a.dropdown-toggle(href="#", data-toggle="dropdown", 
           role="button", aria-haspopup="true", aria-expanded="false") {{ 'CHANGE_LANG' | translate}}

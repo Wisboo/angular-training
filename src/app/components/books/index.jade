@@ -10,7 +10,7 @@
           span.input-group-addon
             i(class="glyphicon glyphicon-search")
     .book-list
-      .book-item(ng-repeat="book in books")
+      .book-item(ng-repeat="book in ctrl.books")
         img(ng-src="{{book.imageUrl || defaultImage }}")
         h5 {{book.name}}
         {{book.author}}

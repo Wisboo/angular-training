@@ -1,7 +1,7 @@
 angular.module('wisboo').controller(
   'MenuController', ['$translate', 'User', '$state', function ($translate, User, $state) {
     const self = this;
-    self.authenticatedUser = User.getUser() !== undefined;
+    self.authenticatedUser = User.getUser();
 
     self.changeLanguage = function (langKey) {
       $translate.use(langKey);

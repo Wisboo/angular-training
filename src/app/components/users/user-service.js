@@ -24,6 +24,19 @@ angular.module('wisboo').factory(
     factory.getUser = function () {
       return $localStorage._wbooks_user;
     };
+
+    factory.checkout = function () {
+      return $http.get(configuration.endpoint.users + '/me').then(
+        function (resp) {
+          return resp.data;
+        }
+      );
+    };
+
+    factory.edit = function (user) {
+
+    };
+
     return factory;
   }]
 );
