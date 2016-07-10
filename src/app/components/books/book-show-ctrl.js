@@ -1,81 +1,96 @@
 angular.module('wisboo').controller(
-  'BookShowController', ['Book', '$stateParams', 'Comment', '$translate', 'User', '$filter',
-  function (Book, $stateParams, Comment, $translate, User, $filter) {
-    const self = this;
-
-    self.saveComment = function (comment) {
-      self.savingErrorMsg = undefined;
-      const oldComments = angular.copy(self.comments);
+  'BookShowController', ['Book', '$stateParams', 'Comment', '$translate', 'User', '$filter', 'growl',
+  function (Book, $stateParams, Comment, $translate, User, $filter, growl) {
+    this.saveComment = (comment) => {
+      this.savingErrorMsg = undefined;
+      const oldComments = angular.copy(this.comments);
       const newComment = {
         comment: comment,
         createdAt: new Date(),
         user: User.getUser()
       };
-      self.comments.push(newComment);
+      this.comments.push(newComment);
 
       Comment.save(comment, $stateParams.bookId).then(
-        function () {
+        () => {
           ctrl.comment = '';
         },
-        function () {
-          $translate('COMMENT_SAVING_ERROR').then(function (text) {
-            self.savingErrorMsg = text;
+        () => {
+          $translate('COMMENT_SAVING_ERROR').then( (text) => {
+            this.savingErrorMsg = text;
           });
-          self.comments = oldComments;
+          this.comments = oldComments;
         }
       );
     };
 
-    self.rentBook = function () {
+    this.rentBook = () => {
       Book.rent($stateParams.bookId).then(
-        function() {
-          self.alreadyRented = true;
+        () => {
+          this.alreadyRented = true;
+          $translate('RENT_SUCCESS', {book_name: this.book.name}).then( (text) => {
+            growl.success(text);
+          });
           $translate('RETURN_MSG', { date: $filter.date(new Date().toISOString(), 'shortDate') })
-          .then(function (text) {
-            self.statusMsg = text;
+          .then( (text) => {
+            this.statusMsg = text;
           });
         },
-        function() {}
+        () => {
+          $translate('RENT_ERROR').then( (text) => {
+            growl.error(text);
+          });
+        }
       );
     };
 
-    self.addToWishlist = function () {
+    this.addToWishlist = () => {
       Book.addToWishlist($stateParams.bookId).then(
-        function () {},
-        function () {}
+        () => {
+          $translate('WISHLIST_SUCCESS', {book_name: this.book.name}).then( (text) => {
+            growl.success(text);
+          });
+        },
+        () => {
+          $translate('WISHLIST_ERROR').then( (text) => {
+            growl.error(text);
+          });
+        }
       );
     };
-    function init () {
-      self.alreadyRented = true;
+    this.init = () => {
+      this.alreadyRented = true;
       Book.get($stateParams.bookId).then(
-        function (book) {
-          self.book = book;
+        (book) => {
+          this.book = book;
         }
       );
       Book.checkIfAvailable($stateParams.bookId).then(
-        function (rent) {
+        (rent) => {
           if (rent) {
-            self.alreadyRented = rent.user.objectId;
+            this.alreadyRented = rent.user.objectId;
             if (rent.user.objectId === User.getUser().objectId) {
-              $translate('RETURN_MSG', { date: $filter.date(rent.to.iso, 'shortDate') }).then(function (text) {
-                self.statusMsg = text;
+              $translate('RETURN_MSG', { date: $filter('date')(rent.to.iso, 'shortDate') }).then( (text) => {
+                this.statusMsg = text;
               });
             } else {
-              $translate('NOT_AVAILABLE_MSG').then(function (text) {
-                self.statusMsg = text;
+              $translate('NOT_AVAILABLE_MSG').then( (text) => {
+                this.statusMsg = text;
               });
-            } 
+            }
           } else {
-            self.alreadyRented = false;
+            this.alreadyRented = false;
           }
-      });
-      Comment.query($stateParams.bookId).then(
-        function (comments) {
-          self.comments = comments;
         }
       );
-    }
 
-    init();
+      Comment.query($stateParams.bookId).then(
+        (comments) => {
+          this.comments = comments;
+        }
+      );
+    };
+
+    this.init();
   }]
 );
