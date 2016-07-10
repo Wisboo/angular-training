@@ -1,6 +1,6 @@
 angular.module('wisboo').controller(
-  'BookShowController', ['Book', '$stateParams', 'Comment', '$translate', 'User', '$filter', 'growl',
-  function (Book, $stateParams, Comment, $translate, User, $filter, growl) {
+  'BookShowController', ['Book', 'Rent', '$stateParams', 'Comment', '$translate', 'User', '$filter', 'growl',
+  function (Book, Rent, $stateParams, Comment, $translate, User, $filter, growl) {
     this.saveComment = (comment) => {
       this.savingErrorMsg = undefined;
       const oldComments = angular.copy(this.comments);
@@ -25,13 +25,13 @@ angular.module('wisboo').controller(
     };
 
     this.rentBook = () => {
-      Book.rent($stateParams.bookId).then(
+      Rent.save($stateParams.bookId).then(
         () => {
           this.alreadyRented = true;
           $translate('RENT_SUCCESS', {book_name: this.book.name}).then( (text) => {
             growl.success(text);
           });
-          $translate('RETURN_MSG', { date: $filter.date(new Date().toISOString(), 'shortDate') })
+          $translate('RETURN_MSG', { date: $filter('date')(new Date().toISOString(), 'shortDate') })
           .then( (text) => {
             this.statusMsg = text;
           });

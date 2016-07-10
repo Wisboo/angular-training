@@ -60,5 +60,8 @@ angular.module('wisboo').constant('enTranslations', {
   WISHLIST_ERROR: 'The book "{{book_name}}" could not be added to your wishlist.',
   PASSWORD_CHANGE_SUCCESS: 'The new password was saved.',
   PROFILE_CHANGE_SUCCESS: 'Your profile was saved.',
-  SUGGESTION_SUCCESS: 'Your suggestion was sent.'
+  SUGGESTION_SUCCESS: 'Your suggestion was sent.',
+  NOTIFICATION_ERROR: 'Could not load notifications',
+  NO_NOTIFICATION: 'There are no notifications',
+  UNTIL_RETURN_MSG: '{{days}} days to return the book' 
 });

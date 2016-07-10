@@ -10,5 +10,6 @@ module.exports = [
   'jquery/dist/jquery.js',
   'bootstrap/dist/js/bootstrap.js',
   'angular-bootstrap/ui-bootstrap-tpls.js',
-  'angular-growl-v2/build/angular-growl.js'
+  'angular-growl-v2/build/angular-growl.js',
+  'moment/moment.js'
 ];

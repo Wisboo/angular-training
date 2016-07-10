@@ -60,5 +60,8 @@ angular.module('wisboo').constant('esTranslations', {
   WISHLIST_ERROR: 'El libro "{{book_name}}" no pudo agregarse a tu lista.',
   PASSWORD_CHANGE_SUCCESS: 'La contraseña fue actualizada.',
   PROFILE_CHANGE_SUCCESS: 'Los datos de tu perfil han sido actualizados.',
-  SUGGESTION_SUCCESS: 'Su sugerencia ha sido enviada.'
+  SUGGESTION_SUCCESS: 'Su sugerencia ha sido enviada.',
+  NOTIFICATION_ERROR: 'No se pudieron cargar las notificaciones.',
+  NO_NOTIFICATION: 'No hay notificaciones nuevas.',
+  UNTIL_RETURN_MSG: '{{days}} días para retornar el libro'
 });

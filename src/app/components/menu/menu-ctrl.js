@@ -1,6 +1,6 @@
 angular.module('wisboo').controller(
-  'MenuController', ['$translate', 'User', '$state', '$uibModal', 'growl', 
-  function ($translate, User, $state, $uibModal, growl) {
+  'MenuController', ['$translate', 'User', '$state', '$uibModal', 'growl', 'Rent',
+  function ($translate, User, $state, $uibModal, growl, Rent) {
     this.authenticatedUser = User.getUser();
 
     this.changeLanguage = (langKey) => {
@@ -31,7 +31,15 @@ angular.module('wisboo').controller(
     };
 
     this.init = () => {
-
+      this.notifications = [];
+      Rent.query().then(
+        (resp) => {
+          this.notifications = resp.data.results;
+        },
+        () => {
+          this.notifications = false;
+        }
+      );
     };
 
     this.init();
