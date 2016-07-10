@@ -1,16 +1,16 @@
 angular.module('wisboo').controller(
   'SuggestionController', ['$scope', '$uibModalInstance', 'Suggestion', '$translate', function ($scope, $uibModalInstance, Suggestion, $translate) {
-    $scope.cancel = function () {
+    $scope.cancel = () => {
       $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.saveSuggestion = function (suggestion) {
+    $scope.saveSuggestion = (suggestion) => {
       Suggestion.save(suggestion).then(
-        function () {
+        () => {
           $uibModalInstance.close();
         },
-        function () {
-          $translate('SUGGESTION_ERROR').then(function (text) {
+        () => {
+          $translate('SUGGESTION_ERROR').then( (text) => {
             self.savingErrorMsg = text;
           });
         }

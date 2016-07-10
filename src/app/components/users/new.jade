@@ -1,36 +1,61 @@
 .row
   div(class="col-xs-12 col-md-5 col-lg-4")
     h1 {{ 'CREATE_ACCOUNT' | translate }}
-    form(name="create_account_form",novalidate)
+    form(name="create_account_form", novalidate)
       .form-group
         label {{ 'NAME' | translate }}
-        input.form-control(type="text", required="true", ng-model="ctrl.user.name", name="name")
+        input.form-control(
+          type="text"
+          required=true
+          ng-model="cactrl.user.name"
+          name="name"
+        )
         div(ng-messages="create_account_form.name.$error", role="alert")
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'NAME' | translate }}")
       .form-group
         label {{ 'LASTNAME' | translate }}
-        input.form-control(type="text", required="true", ng-model="ctrl.user.lastname", name="lastname")
+        input.form-control(
+          type="text"
+          required=true
+          ng-model="cactrl.user.lastname"
+          name="lastname"
+        )
         div(ng-messages="create_account_form.lastname.$error", role="alert")
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'LASTNAME' | translate }}")
       .form-group
         label {{ 'USERNAME' | translate }}
-        input.form-control(type="text", required="true", ng-model="ctrl.user.username", name="username")
+        input.form-control(
+          type="text"
+          required=true
+          ng-model="cactrl.user.username"
+          name="username"
+        )
         div(ng-messages="create_account_form.username.$error", role="alert")
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'USERNAME' | translate }}")
       .form-group
         label {{ 'EMAIL' | translate }}
-        input.form-control(type="email", required="true", ng-model="ctrl.user.email", name="email")
+        input.form-control(
+          type="email"
+          required=true
+          ng-model="cactrl.user.email"
+          name="email"
+        )
         div(ng-messages="create_account_form.email.$error", role="alert")
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'EMAIL' | translate }}")
           div(ng-message="email") {{ 'INVALID_EMAIL_ERROR' | translate}}
       .form-group
         label {{ 'PASSWORD' | translate }}
-        input.form-control(type="password", required="true", ng-model="ctrl.user.password",
-         name="password", minlength="8", ng-pattern="/([a-zA-Z][0-9]|[0-9][a-zA-Z])/")
+        input.form-control(
+          type="password"
+          required=true
+          ng-model="cactrl.user.password"
+          name="password"
+          minlength="8"
+          ng-pattern="/([a-zA-Z][0-9]|[0-9][a-zA-Z])/")
         div(ng-messages="create_account_form.password.$error", role="alert")
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'PASSWORD' | translate }}")
@@ -38,11 +63,18 @@
           div(ng-message="pattern") {{ 'LETTERS_AND_NUMBERS_ERROR' | translate}}
       .form-group
         label {{ 'CONFIRM_PASSWORD' | translate }}
-        input.form-control(type="password", required="true", ng-model="ctrl.passwordConfirm", name="password_confirm", match="ctrl.user.password")
+        input.form-control(type="password"
+          required=true
+          ng-model="cactrl.passwordConfirm"
+          name="password_confirm"
+          wisboo-match="cactrl.user.password")
         div(ng-messages="create_account_form.password_confirm.$error", role="alert")
           div(ng-message="required") {{ 'UNCONFIRMED_PASSWORD_ERROR' | translate }}
-          div(ng-message="match") {{ 'UNEQUAL_ERROR' | translate}}
+          div(ng-message="wisboo-match") {{ 'UNEQUAL_ERROR' | translate}}
 
-      .alert.alert-danger(ng-show='ctrl.error_msg') {{ctrl.error_msg}}
-      button(type="button", class="btn btn-primary",
-        ng-disabled="create_account_form.$invalid", ng-click="ctrl.registerUser(ctrl.user)") {{ 'CREATE_ACCOUNT' | translate }}
+      .alert.alert-danger(ng-show='cactrl.error_msg') {{cactrl.error_msg}}
+      button.btn.btn-primary(
+        type="button"
+        ng-disabled="create_account_form.$invalid"
+        ng-click="cactrl.registerUser(cactrl.user)"
+      ) {{ 'CREATE_ACCOUNT' | translate }}

@@ -1,7 +1,7 @@
 angular.module('wisboo').factory(
-  'Suggestion', ['$http', 'configuration', function ($http, configuration) {
+  'Suggestion', ['$http', 'configuration', ($http, configuration) => {
     const factory = {};
-    factory.save = function (suggestion) {
+    factory.save = (suggestion) => {
       return $http.post(configuration.endpoint.suggestions, suggestion);
     };
     return factory;

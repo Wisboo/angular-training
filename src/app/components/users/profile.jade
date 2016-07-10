@@ -1,54 +1,99 @@
 .row
   .col-xs-12.col-md-6.col-offset-md-3
-    button.btn.btn-success.float-right(ng-click='ctrl.enableEditing()', ng-disabled='ctrl.isEditingEnabled()') {{ 'EDIT' | translate}}
+    button.btn.btn-success.float-right(
+      ng-click='pctrl.enableEditing()'
+      ng-disabled='pctrl.isEditingEnabled()'
+    ) {{ 'EDIT' | translate}}
     h1 {{ 'MY_ACCOUNT' | translate}}
     form(name='edit_user_form', novalidate=true)
       .form-group
         label {{ 'NAME' | translate }}
-        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.name }}
-        input.form-control(type='text', name='name', ng-model='ctrl.user.name', require=true, ng-show='ctrl.isEditingEnabled()')
-        div(ng-messages='edit_user_form.name.$error', ng-show='ctrl.isEditingEnabled()', role='alert')
+        p.form-control-static(ng-hide='pctrl.isEditingEnabled()') {{ pctrl.user.name }}
+        input.form-control(
+          type='text'
+          name='name'
+          ng-model='pctrl.user.name'
+          require=true
+          ng-show='pctrl.isEditingEnabled()'
+        )
+        div(
+          ng-messages='edit_user_form.name.$error'
+          ng-show='pctrl.isEditingEnabled()'
+          role='alert'
+        )
           div(ng-message='required')
             p(translate='REQUIRED_ERROR', translate-value-field="{{'NAME' | translate }}")
 
       .form-group
         label {{ 'LASTNAME' | translate }}
-        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.lastname }}
-        input.form-control(type='text', required='true', ng-model='ctrl.user.lastname', name='lastname', ng-show='ctrl.isEditingEnabled()')
-        div(ng-messages='edit_user_form.lastname.$error', ng-show='ctrl.isEditingEnabled()', role='alert')
+        p.form-control-static(ng-hide='pctrl.isEditingEnabled()') {{ pctrl.user.lastname }}
+        input.form-control(
+          type='text'
+          required=true
+          ng-model='pctrl.user.lastname'
+          name='lastname'
+          ng-show='pctrl.isEditingEnabled()'
+        )
+        div(
+          ng-messages='edit_user_form.lastname.$error'
+          ng-show='pctrl.isEditingEnabled()'
+          role='alert'
+        )
           div(ng-message='required')
             p(translate='REQUIRED_ERROR', translate-value-field="{{'LASTNAME' | translate }}")
 
       .form-group
         label {{ 'USERNAME' | translate }}
-        p.form-control-static(ng-hide='ctrl.isEditingEnabled()') {{ ctrl.user.username }}
-        input.form-control(type='text', required='true', ng-model='ctrl.user.username', name='username', ng-show='ctrl.isEditingEnabled()')
-        div(ng-messages="edit_user_form.username.$error", role="alert", ng-show='ctrl.isEditingEnabled()')
+        p.form-control-static(ng-hide='pctrl.isEditingEnabled()') 
+          {{ pctrl.user.username }}
+        input.form-control(
+          type='text'
+          required=true
+          ng-model='pctrl.user.username'
+          name='username'
+          ng-show='pctrl.isEditingEnabled()'
+        )
+        div(
+          ng-messages="edit_user_form.username.$error"
+          role="alert"
+          ng-show='pctrl.isEditingEnabled()'
+        )
           div(ng-message="required")
             p(translate="REQUIRED_ERROR", translate-value-field="{{'USERNAME' | translate }}")
 
       .form-group
         label {{ 'EMAIL' | translate }}
-        p.form-control-static {{ ctrl.user.email }}
+        p.form-control-static {{ pctrl.user.email }}
 
       .form-group
         label {{ 'MEMBER_SINCE' | translate }}
-        p.form-control-static {{ ctrl.user.createdAt | date: 'longDate' }}
+        p.form-control-static {{ pctrl.user.createdAt | date: 'longDate' }}
 
-      .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-        {{ctrl.savingErrorMsg}}
-      button.btn.btn-primary(ng-click='ctrl.saveChanges(ctrl.user)', ng-disabled='edit_user_form.$invalid',
-      ng-show='ctrl.isEditingEnabled()') {{ 'SAVE' | translate }}
-      button.btn.btn-warning(ng-click='ctrl.cancelEditing()', ng-show='ctrl.isEditingEnabled()') {{ 'CANCEL' | translate }}
+      .alert.alert-danger(ng-show='pctrl.savingErrorMsg')
+        {{pctrl.savingErrorMsg}}
+      button.btn.btn-primary(
+        ng-click='pctrl.saveChanges(pctrl.user)'
+        ng-disabled='edit_user_form.$invalid'
+        ng-show='pctrl.isEditingEnabled()'
+      ) {{ 'SAVE' | translate }}
+      button.btn.btn-warning(
+        ng-click='pctrl.cancelEditing()'
+        ng-show='pctrl.isEditingEnabled()'
+      ) {{ 'CANCEL' | translate }}
 
     hr
 
     h4 {{ 'CHANGE_PASSWORD' | translate}}
-    form(name='change_pass_form', novalidate=true)
+    form(name='change_pass_form', novalidate)
       .form-group
         label {{ 'PASSWORD' | translate }}
-        input.form-control(type='password', required='true', ng-model='ctrl.newPassword',
-         name='password', minlength='8', ng-pattern='/([a-zA-Z][0-9]|[0-9][a-zA-Z])/')
+        input.form-control(
+          type='password'
+          required=true
+          ng-model='pctrl.newPassword'
+          name='password'
+          minlength='8'
+          ng-pattern='/([a-zA-Z][0-9]|[0-9][a-zA-Z])/')
         div(ng-messages='change_pass_form.password.$error', role='alert')
           div(ng-message='required')
             p(translate='REQUIRED_ERROR', translate-value-field="{{'PASSWORD' | translate }}")
@@ -56,10 +101,18 @@
           div(ng-message='pattern') {{ 'LETTERS_AND_NUMBERS_ERROR' | translate}}
       .form-group
         label {{ 'CONFIRM_PASSWORD' | translate }}
-        input.form-control(type='password', required='true', ng-model='ctrl.passwordConfirm', name='password_confirm', match='ctrl.newPassword')
+        input.form-control(
+          type='password'
+          required=true
+          ng-model='pctrl.passwordConfirm'
+          name='password_confirm'
+          wisboo-match='pctrl.newPassword')
         div(ng-messages='change_pass_form.password_confirm.$error', role='alert')
           div(ng-message='required') {{ 'UNCONFIRMED_PASSWORD_ERROR' | translate }}
-          div(ng-message='match') {{ 'UNEQUAL_ERROR' | translate}}
-      .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-        {{ctrl.savingPassErrorMsg}}
-      button.btn.btn-primary(ng-click='ctrl.changePassword(ctrl.newPassword)', ng-disabled='change_pass_form.$invalid') {{ 'CHANGE_PASSWORD' | translate }}
+          div(ng-message='wisboo-match') {{ 'UNEQUAL_ERROR' | translate}}
+      .alert.alert-danger(ng-show='pctrl.savingErrorMsg')
+        {{pctrl.savingPassErrorMsg}}
+      button.btn.btn-primary(
+        ng-click='pctrl.changePassword(pctrl.newPassword)'
+        ng-disabled='change_pass_form.$invalid'
+      ) {{ 'CHANGE_PASSWORD' | translate }}

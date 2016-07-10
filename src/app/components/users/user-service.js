@@ -1,21 +1,21 @@
 angular.module('wisboo').factory(
-  'User', ['$http', '$localStorage', 'configuration', function ($http, $localStorage, configuration) {
+  'User', ['$http', '$localStorage', 'configuration', ($http, $localStorage, configuration) => {
     const factory = {};
-    factory.doLogin = function (credentials) {
+    factory.doLogin = (credentials) => {
       return $http.get(configuration.endpoint.login, {
         params: {
           username: credentials.username,
           password: credentials.password
         }
       })
-      .then(function (resp) {
+      .then( (resp) => {
         $localStorage._wbooks_user = resp.data;
       });
     };
 
-    factory.doLogout = function () {
+    factory.doLogout = () => {
       return $http.post(configuration.endpoint.logout).then(
-        function () {
+        () => {
           delete $localStorage._wbooks_user;
         }
       );
@@ -31,7 +31,7 @@ angular.module('wisboo').factory(
 
     factory.checkout = function () {
       return $http.get(configuration.endpoint.users + '/me').then(
-        function (resp) {
+        (resp) => {
           return resp.data;
         }
       );
@@ -49,7 +49,7 @@ angular.module('wisboo').factory(
         };
       }
       return $http.put(configuration.endpoint.users + '/' + user.objectId, data).then(
-        function () {
+        () => {
           if (data.password) {
             delete $localStorage._wbooks_user;
             factory.doLogin({username: user.username, password: data.password});

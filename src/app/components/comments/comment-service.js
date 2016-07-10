@@ -1,7 +1,7 @@
 angular.module('wisboo').factory(
-  'Comment', ['$http', 'configuration', 'User', function ($http, configuration, User) {
+  'Comment', ['$http', 'configuration', 'User', ($http, configuration, User) => {
     const factory = {};
-    factory.query = function (bookId) {
+    factory.query = (bookId) => {
       const condition = {
         book: {
           __type: 'Pointer',
@@ -16,13 +16,13 @@ angular.module('wisboo').factory(
           include: 'user'
         }
       }).then(
-        function (res) {
+        (res) => {
           return res.data.results;
         }
       );
     };
 
-    factory.save = function (comment, bookId) {
+    factory.save = (comment, bookId) => {
       const data = {};
       data.book = {
         __type: 'Pointer',

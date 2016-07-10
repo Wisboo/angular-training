@@ -27,13 +27,11 @@ angular.module('wisboo').config([
         views: {
           menu: {
             templateUrl: 'app/components/menu/menu.html',
-            controller: 'MenuController',
-            controllerAs: 'menu'
+            controller: 'MenuController as menu'
           },
           main: {
             templateUrl: 'app/components/books/index.html',
-            controller: 'BookListController',
-            controllerAs: 'ctrl'
+            controller: 'BookListController as blctrl'
           }
         },
         access: 'only-signin'
@@ -43,13 +41,11 @@ angular.module('wisboo').config([
         views: {
           menu: {
             templateUrl: 'app/components/menu/menu.html',
-            controller: 'MenuController',
-            controllerAs: 'menu'
+            controller: 'MenuController as menu'
           },
           main: {
             templateUrl: 'app/components/users/profile.html',
-            controller: 'ProfileController',
-            controllerAs: 'ctrl'
+            controller: 'ProfileController as pctrl'
           }
         },
         access: 'only-signin'
@@ -59,13 +55,11 @@ angular.module('wisboo').config([
         views: {
           menu: {
             templateUrl: 'app/components/menu/menu.html',
-            controller: 'MenuController',
-            controllerAs: 'menu'
+            controller: 'MenuController as menu'
           },
           main: {
             templateUrl: 'app/components/books/show.html',
-            controller: 'BookShowController',
-            controllerAs: 'ctrl'
+            controller: 'BookShowController as bsctrl'
           }
         },
         access: 'only-signin'
@@ -75,13 +69,11 @@ angular.module('wisboo').config([
         views: {
           menu: {
             templateUrl: 'app/components/menu/menu.html',
-            controller: 'MenuController',
-            controllerAs: 'menu'
+            controller: 'MenuController as menu'
           },
           main: {
             templateUrl: 'app/components/users/new.html',
-            controller: 'CreateAccountController',
-            controllerAs: 'ctrl'
+            controller: 'CreateAccountController as cactrl'
           }
         },
         access: 'only-anon'
@@ -91,8 +83,7 @@ angular.module('wisboo').config([
         views: {
           main: {
             templateUrl: 'app/components/users/login.html',
-            controller: 'LoginController',
-            controllerAs: 'ctrl'
+            controller: 'LoginController as lctrl'
           }
         },
         access: 'only-anon'
@@ -100,7 +91,7 @@ angular.module('wisboo').config([
 
     $locationProvider.html5Mode(true);
 
-    $httpProvider.interceptors.push([ 'configuration', '$injector', function (configuration, $injector) {
+    $httpProvider.interceptors.push([ 'configuration', '$injector', (configuration, $injector) => {
       return {
         request: function (config) {
           config.headers = config.headers || {};
@@ -118,8 +109,8 @@ angular.module('wisboo').config([
     }]);
   }
 ])
-.run(['$rootScope', 'User', '$state', function ($rootScope, User, $state) {
-  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+.run(['$rootScope', 'User', '$state', ($rootScope, User, $state) => {
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
     if (toState.access === 'only-signin' && !User.getUser()) {
       $state.go('sign-in');
       event.preventDefault();

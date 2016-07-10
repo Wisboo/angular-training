@@ -5,7 +5,9 @@ angular.module('wisboo').constant('configuration', {
     comments: 'https://api.parse.com/1/classes/Comment',
     login: 'https://api.parse.com/1/login',
     logout: 'https://api.parse.com/1/logout',
-    suggestions: 'https://api.parse.com/1/classes/BookSuggestion'
+    suggestions: 'https://api.parse.com/1/classes/BookSuggestion',
+    rent: 'https://api.parse.com/1/classes/Rent',
+    wishlist: 'https://api.parse.com/1/classes/Wishlist'
   },
   credentials: {
     applicationId: 'DfYLYMHIcC80ykwZFbQet4a3YqYkOD92hcXIMIfA',
