@@ -9,9 +9,9 @@
       .form-group
         label {{ 'PASSWORD' | translate }}
         input.form-control(type='password', ng-model='credentials.password', name='password')
-      .alert.alert-danger(ng-show='ctrl.errorMsg')
-        {{ ctrl.errorMsg }}
-      button(class='btn btn-primary', ng-click='ctrl.login(credentials)') {{ 'LOGIN' | translate }}
+      .alert.alert-danger(ng-show='lctrl.errorMsg')
+        {{ lctrl.errorMsg }}
+      button(class='btn btn-primary', ng-click='lctrl.login(credentials)') {{ 'LOGIN' | translate }}
     hr
     {{ 'NO_ACCOUNT_MSG' | translate }}
     a(ui-sref='register') {{ 'CREATE_ACCOUNT' | translate }}!

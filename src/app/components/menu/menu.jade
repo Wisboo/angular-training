@@ -19,6 +19,25 @@ nav(class="navbar navbar-default")
         li(ng-show="menu.authenticatedUser")
           a(href="javascript:void(0)", ng-click='menu.openSuggestionModal()') {{ 'SUGGEST_BOOK' | translate }}
         li.dropdown(ng-show="menu.authenticatedUser")
+          a.dropdown-toggle(
+            href="javascript:void(0)"
+            data-toggle="dropdown", 
+            role="button"
+            aria-haspopup=true
+            aria-expanded="false")
+            i.glyphicon.glyphicon-bell
+            span.caret
+          ul.dropdown-menu
+            li(ng-repeat='notificaction in notificationes')
+              .media
+                .media-left
+                  img(ng-href='notification.imageUrl')
+                .media-body
+                  strong
+                  h5
+                    {{ notification.name }}
+                  {{ notification.author }}
+        li.dropdown(ng-show="menu.authenticatedUser")
           a.dropdown-toggle(href="javascript:void(0)", data-toggle="dropdown", 
           role="button", aria-haspopup="true", aria-expanded="false") {{ 'HELLO' | translate }} {{ menu.authenticatedUser.name }}
             span.caret

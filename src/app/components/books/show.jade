@@ -3,30 +3,36 @@
     a(ui-sref='dashboard') {{ 'BACK' | translate }}
     .book-details.row
       .col-sm-4
-        img(src='{{ ctrl.book.imageUrl || ctrl.defaultImage }}')
+        img(src='{{ bsctrl.book.imageUrl || bsctrl.defaultImage }}')
       .col-sm-8
         .book-info
-          h3 {{ ctrl.book.name }}
-          p {{ ctrl.book.author }}
-          {{ ctrl.book.year }} 
+          h3 {{ bsctrl.book.name }}
+          p {{ bsctrl.book.author }}
+          {{ bsctrl.book.year }} 
           br
-          {{ ctrl.book.publisher }}
-        {{ ctrl.statusMsg }}
+          {{ bsctrl.book.publisher }}
+        {{ bsctrl.statusMsg }}
         div
-          button.btn.btn-primary(ng-click='ctrl.rentBook()', ng-disabled='ctrl.alreadyRented') {{ 'RENT' | translate }}
-          button.btn.btn-success(ng-click='ctrl.addToWishlist()', ng-show='ctrl.alreadyRented') {{ 'ADD_TO_WISHLIST' | translate }}
+          button.btn.btn-primary(
+            ng-click='bsctrl.rentBook()'
+            ng-disabled='bsctrl.alreadyRented') 
+            {{ 'RENT' | translate }}
+          button.btn.btn-success(
+            ng-click='bsctrl.addToWishlist()'
+            ng-show='bsctrl.alreadyRented')
+            {{ 'ADD_TO_WISHLIST' | translate }}
     hr
     h5 {{ 'NEW_COMMENT' | translate}}
     form(name='new_comment_form', novalidate=true)
       .form-group
         label {{ 'COMMENT' | translate }}
-        textarea.form-control(rows='3', maxlength='255', required=true, ng-model='ctrl.comment')
-        .alert.alert-danger(ng-show='ctrl.savingErrorMsg')
-          {{ ctrl.savingErrorMsg }}
-      button.btn.btn-primary(ng-click='ctrl.saveComment(comment)', ng-disabled='!ctrl.comment.length') {{ 'SEND' | translate }}
+        textarea.form-control(rows='3', maxlength='255', required=true, ng-model='bsctrl.comment')
+        .alert.alert-danger(ng-show='bsctrl.savingErrorMsg')
+          {{ bsctrl.savingErrorMsg }}
+      button.btn.btn-primary(ng-click='bsctrl.saveComment(comment)', ng-disabled='!bsctrl.comment.length') {{ 'SEND' | translate }}
     h5 {{ 'COMMENTS' | translate }}
-    p(ng-show='!ctrl.comments') {{ 'NO_COMMENTS' | translate }}
-    .media(ng-repeat='comment in ctrl.comments')
+    p(ng-show='!bsctrl.comments') {{ 'NO_COMMENTS' | translate }}
+    .media(ng-repeat='comment in bsctrl.comments')
       .media-left
       .media-body
         h5.media-heading {{ comment.user.name + ' ' + comment.user.lastname }}

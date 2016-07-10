@@ -1,23 +1,23 @@
 angular.module('wisboo').factory(
-  'Book', ['$http', 'configuration', 'User', function ($http, configuration, User) {
+  'Book', ['$http', 'configuration', 'User', ($http, configuration, User) => {
     const factory = {};
     const rentDays = 15;
 
-    factory.query = function () {
+    factory.query = () => {
       return $http.get(configuration.endpoint.books);
     };
 
-    factory.get = function (bookId) {
+    factory.get = (bookId) => {
       return $http.get(configuration.endpoint.books + '/' + bookId).then(
-        function (resp) {
+        (resp) => {
           return resp.data;
         }
       );
     };
 
-    factory.rent = function (bookId) {
-      const fromDate = new Date(), 
-            toDate = new Date(fromDate);
+    factory.rent = (bookId) => {
+      const fromDate = new Date();
+      const toDate = new Date(fromDate);
       toDate.setDate(toDate.getDate() + rentDays);
       const data = {
         user: {
@@ -42,7 +42,7 @@ angular.module('wisboo').factory(
       return $http.post(configuration.endpoint.rent, data);
     };
 
-    factory.addToWishlist = function (bookId) {
+    factory.addToWishlist = (bookId) => {
       const data = {
         user: {
           __type: 'Pointer',
@@ -58,7 +58,7 @@ angular.module('wisboo').factory(
       return $http.post(configuration.endpoint.wishlist, data);
     };
 
-    factory.checkIfAvailable = function (bookId) {
+    factory.checkIfAvailable = (bookId) => {
       const current = new Date();
       const condition = {
         book: {
@@ -68,12 +68,12 @@ angular.module('wisboo').factory(
         },
         from: {
           iso: {
-            '$lte': current.toISOString()
+            '$gte': current.toISOString()
           }
         },
         to: {
           iso: {
-            '$gte': current.toISOString()
+            '$lte': current.toISOString()
           }
         }
       };
@@ -81,9 +81,26 @@ angular.module('wisboo').factory(
         params: {
           where: condition
         }
-      }).then(function (res) {
+      }).then( (res) => {
         return res.data.results.length > 0 ? res.data.results[0] : false;
       });
+    };
+
+    factory.rentsForUser = () => {
+      const condition = {
+        user: {
+          __type: 'Pointer',
+          className: '_User',
+          objectId: User.getUser().objectId
+        }
+      }
+
+      return $http.get(configuration.endpoint.rent, {
+          params: {
+            where: condition
+          }
+        }
+      );
     };
     return factory;
   }]

@@ -1,61 +1,65 @@
 angular.module('wisboo').controller(
-  'ProfileController', ['User', '$translate', function (User, $translate) {
-    const self = this;
-
-    User.checkout().then(function (user) {
-      self.user = user;
+  'ProfileController', ['User', '$translate', 'growl', function (User, $translate, growl) {
+    User.checkout().then( (user) => {
+      this.user = user;
     });
 
-    self.enableEditing = function () {
-      self.editing = true;
-      self.oldData = angular.copy(self.user);
+    this.enableEditing = () => {
+      this.editing = true;
+      this.oldData = angular.copy(this.user);
     };
 
-    self.isEditingEnabled = function () {
-      return self.editing;
+    this.isEditingEnabled = () => {
+      return this.editing;
     };
 
-    self.saveChanges = function (user) {
-      self.savingErrorMsg = undefined;
+    this.saveChanges = (user) => {
+      this.savingErrorMsg = undefined;
       User.edit(user).then(
-        function () {
-          self.editing = false;
-          self.oldData = undefined;
+        () => {
+          this.editing = false;
+          this.oldData = undefined;
+          $translate('PROFILE_CHANGE_SUCCESS').then( (text) => {
+            growl.success(text);
+          });
         },
-        function (resp) {
+        (resp) => {
           if (resp.data.code === 202) {
-            $translate('USERNAME_TAKEN_ERROR').then(function (text) {
-              self.savingErrorMsg = text;
+            $translate('USERNAME_TAKEN_ERROR').then( (text) => {
+              this.savingErrorMsg = text;
             });
           } else {
-            $translate('GENERAL_SAVING_ERROR').then(function (text) {
-              self.savingErrorMsg = text;
+            $translate('GENERAL_SAVING_ERROR').then( (text) => {
+              this.savingErrorMsg = text;
             });
           }
         }
       );
     };
 
-    self.changePassword = function (newPassword) {
-      self.user.password = newPassword;
-      self.savingPassErrorMsg = undefined;
-      User.edit(self.user).then(
-        function () {
-          self.newPassword = '';
-          self.passwordConfirm = '';
+    this.changePassword = (newPassword) => {
+      this.user.password = newPassword;
+      this.savingPassErrorMsg = undefined;
+      User.edit(this.user).then(
+        () => {
+          this.newPassword = '';
+          this.passwordConfirm = '';
+          $translate('PASSWORD_CHANGE_SUCCESS').then( (text) => {
+            growl.success(text);
+          });
         },
-        function () {
-          $translate('GENERAL_SAVING_ERROR').then(function (text) {
-            self.savingPassErrorMsg = text;
+        () => {
+          $translate('GENERAL_SAVING_ERROR').then( (text) => {
+            this.savingPassErrorMsg = text;
           });
         }
       );
     };
 
-    self.cancelEditing = function () {
-      self.editing = false;
-      self.user = self.oldData;
-      self.oldData = undefined;
+    this.cancelEditing = () => {
+      this.editing = false;
+      this.user = this.oldData;
+      this.oldData = undefined;
     };
   }]
 );
