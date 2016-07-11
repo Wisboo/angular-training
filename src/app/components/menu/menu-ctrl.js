@@ -31,15 +31,17 @@ angular.module('wisboo').controller(
     };
 
     this.init = () => {
-      this.notifications = [];
-      Rent.query().then(
-        (resp) => {
-          this.notifications = resp.data.results;
-        },
-        () => {
-          this.notifications = false;
-        }
-      );
+      if (this.authenticatedUser) {
+        this.notifications = [];
+        Rent.query().then(
+          (resp) => {
+            this.notifications = resp.data.results;
+          },
+          () => {
+            this.notifications = false;
+          }
+        );
+      }
     };
 
     this.init();

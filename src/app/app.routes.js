@@ -78,6 +78,20 @@ angular.module('wisboo').config([
         },
         access: 'only-anon'
       })
+      .state('stats', {
+        url: '/stats',
+        views: {
+          menu: {
+            templateUrl: 'app/components/menu/menu.html',
+            controller: 'MenuController as menu'
+          },
+          main: {
+            templateUrl: 'app/components/users/info.html',
+            controller: 'StatsController as sctrl'
+          }
+        },
+        access: 'only-signin'
+      })
       .state('sign-in', {
         url: '/sign-in',
         views: {

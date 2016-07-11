@@ -14,22 +14,6 @@ angular.module('wisboo').factory(
       );
     };
 
-    factory.addToWishlist = (bookId) => {
-      const data = {
-        user: {
-          __type: 'Pointer',
-          className: '_User',
-          objectId: User.getUser().objectId
-        },
-        book: {
-          __type: 'Pointer',
-          className: 'Book',
-          objectId: bookId
-        }
-      };
-      return $http.post(configuration.endpoint.wishlist, data);
-    };
-
     factory.checkIfAvailable = (bookId) => {
       const current = new Date();
       const condition = {

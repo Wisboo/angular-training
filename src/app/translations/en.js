@@ -49,7 +49,6 @@ angular.module('wisboo').constant('enTranslations', {
   PRICE: 'Price',
   LINK: 'Link',
   YEAR: 'Year',
-  SUGGEST_BOOK: 'Suggest book',
   SUGGESTION_ERROR: 'An error ocurred while savin your suggestion',
   ADD_TO_WISHLIST: 'Add to wishlist',
   RETURN_MSG: 'Return before {{ date }}',
@@ -63,5 +62,10 @@ angular.module('wisboo').constant('enTranslations', {
   SUGGESTION_SUCCESS: 'Your suggestion was sent.',
   NOTIFICATION_ERROR: 'Could not load notifications',
   NO_NOTIFICATION: 'There are no notifications',
-  UNTIL_RETURN_MSG: '{{days}} days to return the book' 
+  UNTIL_RETURN_MSG: '{{days}} days to return the book',
+  READ: 'Read',
+  WISHLIST: 'Wishlist',
+  STATS: 'Stats',
+  EMPTY_WISHLIST: 'You have no books in your wishlist.',
+  NO_BOOKS: 'You have not ready any book.'
 });

@@ -1,6 +1,6 @@
 angular.module('wisboo').controller(
-  'BookShowController', ['Book', 'Rent', '$stateParams', 'Comment', '$translate', 'User', '$filter', 'growl',
-  function (Book, Rent, $stateParams, Comment, $translate, User, $filter, growl) {
+  'BookShowController', ['Book', 'Rent', 'Wishlist', '$stateParams', 'Comment', '$translate', 'User', '$filter', 'growl',
+  function (Book, Rent, Wishlist, $stateParams, Comment, $translate, User, $filter, growl) {
     this.saveComment = (comment) => {
       this.savingErrorMsg = undefined;
       const oldComments = angular.copy(this.comments);
@@ -11,9 +11,9 @@ angular.module('wisboo').controller(
       };
       this.comments.push(newComment);
 
-      Comment.save(comment, $stateParams.bookId).then(
+      Comment.save(this.comment, $stateParams.bookId).then(
         () => {
-          ctrl.comment = '';
+          this.comment = '';
         },
         () => {
           $translate('COMMENT_SAVING_ERROR').then( (text) => {
@@ -45,7 +45,7 @@ angular.module('wisboo').controller(
     };
 
     this.addToWishlist = () => {
-      Book.addToWishlist($stateParams.bookId).then(
+      Wishlist.add($stateParams.bookId).then(
         () => {
           $translate('WISHLIST_SUCCESS', {book_name: this.book.name}).then( (text) => {
             growl.success(text);
@@ -84,7 +84,7 @@ angular.module('wisboo').controller(
         }
       );
 
-      Comment.query($stateParams.bookId).then(
+      Comment.queryByBook($stateParams.bookId).then(
         (comments) => {
           this.comments = comments;
         }
