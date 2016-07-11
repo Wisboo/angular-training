@@ -5,6 +5,7 @@ angular.module(
     'ngStorage',
     'pascalprecht.translate',
     'ngMessages',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-growl'
   ]
 );

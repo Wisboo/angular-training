@@ -1,30 +1,49 @@
 angular.module('wisboo').controller(
-  'MenuController', ['$translate', 'User', '$state', '$uibModal', function ($translate, User, $state, $uibModal) {
-    const self = this;
-    self.authenticatedUser = User.getUser();
+  'MenuController', ['$translate', 'User', '$state', '$uibModal', 'growl', 'Rent',
+  function ($translate, User, $state, $uibModal, growl, Rent) {
+    this.authenticatedUser = User.getUser();
 
-    self.changeLanguage = function (langKey) {
+    this.changeLanguage = (langKey) => {
       $translate.use(langKey);
     };
 
-    self.logout = function () {
+    this.logout = () => {
       User.doLogout().then(
-        function () {
+        () => {
           $state.go('sign-in');
         }
       );
     };
 
-    self.openSuggestionModal = function () {
+    this.openSuggestionModal = () => {
       const modalInstance = $uibModal.open({
         templateUrl: 'app/components/suggestions/suggest-book.html',
         controller: 'SuggestionController'
       });
 
       modalInstance.result.then(
-        function () {},
-        function () {}
+        () => {
+          $translate('SUGGESTION_SUCCESS').then( (text) => {
+            growl.success(text);
+          });
+        }
       );
     };
+
+    this.init = () => {
+      if (this.authenticatedUser) {
+        this.notifications = [];
+        Rent.query().then(
+          (resp) => {
+            this.notifications = resp.data.results;
+          },
+          () => {
+            this.notifications = false;
+          }
+        );
+      }
+    };
+
+    this.init();
   }]
 );

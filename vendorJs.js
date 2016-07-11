@@ -9,5 +9,7 @@ module.exports = [
   'angular-angular-translate-storage-local/angular-translate-storage-local.js',
   'jquery/dist/jquery.js',
   'bootstrap/dist/js/bootstrap.js',
-  'angular-bootstrap/ui-bootstrap-tpls.js'
+  'angular-bootstrap/ui-bootstrap-tpls.js',
+  'angular-growl-v2/build/angular-growl.js',
+  'moment/moment.js'
 ];

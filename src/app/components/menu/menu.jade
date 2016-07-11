@@ -19,12 +19,41 @@ nav(class="navbar navbar-default")
         li(ng-show="menu.authenticatedUser")
           a(href="javascript:void(0)", ng-click='menu.openSuggestionModal()') {{ 'SUGGEST_BOOK' | translate }}
         li.dropdown(ng-show="menu.authenticatedUser")
+          a.dropdown-toggle(
+            href="javascript:void(0)"
+            data-toggle="dropdown", 
+            role="button"
+            aria-haspopup=true
+            aria-expanded="false")
+            i.glyphicon.glyphicon-bell
+            span.caret
+          ul.dropdown-menu.notifications
+            li(
+              ng-show='menu.notifications || menu.notifications.length > 0'
+              ng-repeat='notification in menu.notifications')
+              .media
+                .media-left
+                  img(ng-src='{{notification.book.imageUrl}}')
+                .media-body
+                  strong(
+                    translate='UNTIL_RETURN_MSG',
+                    translate-value-days="{{ notification.to.iso | wisbooDaysTo }}"
+                  )
+                  h5
+                    {{ notification.book.name }}
+                  {{ notification.book.author }}
+            li(ng-show='!menu.notifications || menu.notifications.length === 0')
+              a.disabled
+                {{ (!menu.notifications) ? ('NOTIFICATION_ERROR' | translate ) : ('NO_NOTIFICATION' | translate) }}
+        li.dropdown(ng-show="menu.authenticatedUser")
           a.dropdown-toggle(href="javascript:void(0)", data-toggle="dropdown", 
           role="button", aria-haspopup="true", aria-expanded="false") {{ 'HELLO' | translate }} {{ menu.authenticatedUser.name }}
             span.caret
           ul.dropdown-menu
             li
               a(ui-sref="me") {{ 'PROFILE' | translate }}
+            li
+              a(ui-sref="stats") {{ 'STATS' | translate }}
             li
               a(href="javascript:void(0)", ng-click="menu.logout()") {{ 'LOGOUT' | translate}}
         li.dropdown

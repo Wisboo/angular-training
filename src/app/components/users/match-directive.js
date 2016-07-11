@@ -1,19 +1,19 @@
-angular.module('wisboo').directive('match',
-  ['$parse', function ($parse) {
+angular.module('wisboo').directive('wisbooMatch',
+  ['$parse', ($parse) => {
     return {
       restrict: 'A',
       require: 'ngModel',
-      link: function (scope, element, attrs, ctrl) {
+      link: (scope, element, attrs, ctrl) => {
         function customValidator (ngModelValue) {
-          if (!ctrl || !attrs.match) {
+          if (!ctrl || !attrs.wisbooMatch) {
             return;
           }
 
-          const match = $parse(attrs.match);
+          const match = $parse(attrs.wisbooMatch);
           if (match(scope) === ngModelValue) {
-            ctrl.$setValidity('match', true);
+            ctrl.$setValidity('wisboo-match', true);
           } else {
-            ctrl.$setValidity('match', false);
+            ctrl.$setValidity('wisboo-match', false);
           }
           return ngModelValue;
         }

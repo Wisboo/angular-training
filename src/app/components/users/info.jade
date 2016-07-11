@@ -1,0 +1,56 @@
+.row
+  .col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+    .text-center
+      h4.green-color
+        {{sctrl.user.name + " " + sctrl.user.lastname}}
+      {{sctrl.user.email}}
+      div
+        strong
+          {{ sctrl.user.books.length }}
+        {{ 'READ' | translate }}
+        span.green-color
+          | |
+        strong
+          {{ sctrl.user.comments.length }}
+        {{ 'COMMENTS' | translate }}
+
+    hr
+.row
+  .col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+    h4.green-color
+     {{ 'READ' | translate }}
+     p(ng-show='sctrl.user.books.length == 0') 
+      {{ 'NO_BOOKS' | translate }}
+    .book-list
+      .book-item(ng-repeat="rent in sctrl.user.books")
+        img(ng-src="{{rent.book.imageUrl || sctrl.defaultImage }}")
+        h5 
+          a(ui-sref='book-details({{ {bookId: rent.book.objectId} }})') {{ rent.book.name }} 
+        {{rent.book.author}}
+    h4.green-color
+     {{ 'WISHLIST' | translate }}
+    p(ng-show='sctrl.user.wishlist.length == 0') 
+      {{ 'EMPTY_WISHLIST' | translate }}
+    .book-list
+      .book-item(ng-repeat="item in sctrl.user.wishlist")
+        img(ng-src="{{item.book.imageUrl || sctrl.defaultImage }}")
+        h5 
+          a(ui-sref='book-details({{ {bookId: item.book.objectId} }})')
+            {{ item.book.name }} 
+        {{item.book.author}}
+    hr
+
+.row
+  .col-sm-offset-1.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-3
+    h4.green-color
+     {{ 'COMMENTS' | translate }}
+    p(ng-show='!sctrl.user.comments') 
+      {{ 'NO_COMMENTS' | translate }}
+    .media(ng-repeat='comment in sctrl.user.comments')
+      .media-body
+        h5.media-heading {{sctrl.user.name + " " + sctrl.user.lastname}}
+        strong.float-right.green-color
+          a(ui-sref='book-details({{ {bookId: comment.book.objectId} }})')
+            {{ comment.book.name }}
+        strong {{ comment.createdAt | date: 'short' }}
+        p {{ comment.comment }}
